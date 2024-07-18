@@ -1,0 +1,26 @@
+KYC Requirements:
+
+Savings Account:
+- Proof of Identity (POI)
+- Proof of Address (POA)
+- Recent Passport size photographs
+
+Current Account:
+- Proof of Identity (POI)
+- Proof of Address (POA)
+- Recent Passport size photographs
+- Additional documents as per the nature of the business (e.g., business registration documents for a corporate account)
+  
+Fixed Deposit Account:
+- Proof of Identity (POI)
+- Proof of Address (POA)
+  
+Recurring Deposit Account:
+- Proof of Identity (POI)
+- Proof of Address (POA)
+  
+NRI (Non-Resident Indian) Account:
+- Proof of Identity (POI) such as Passport
+- Proof of NRI status
+- Proof of Address (both Indian and overseas if applicable)
+- Recent Passport size photographs

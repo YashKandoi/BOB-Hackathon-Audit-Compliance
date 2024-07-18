@@ -1,0 +1,30 @@
+AML Requirements:
+
+General Requirements for All Account Types:
+1. Periodic Update of KYC documents
+2. Monitoring of transactions for suspicious activities
+3. Reporting Cash Transactions greater than set threshold limits
+
+Savings Account:
+- Periodic Update of KYC documents
+- Monitoring of transactions for suspicious activities
+- Reporting Cash Transactions greater than set threshold limits
+
+Current Account:
+- Enhanced due diligence for high-risk customers
+- Regular transaction monitoring
+- Reporting of suspicious transactions and large cash transactions
+  
+Fixed Deposit Account:
+- Due diligence at the time of initial deposit
+- Monitoring transactions related to the deposit
+- Compliance with Periodic KYC update requirements
+  
+Recurring Deposit Account:
+- Monitoring deposit installments
+- Reporting large or suspicious transactions
+  
+NRI (Non-Resident Indian) Account:
+- Due diligence in verifying NRI status
+- Monitoring of remittances and foreign transactions
+- Periodic KYC updates and compliance with international AML guidelines
