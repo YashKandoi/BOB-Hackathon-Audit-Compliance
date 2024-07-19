@@ -1,0 +1,8 @@
+URL:https://m.rbi.org.in/scripts/BS_ViewMasCirculardetails.aspx?Id=4354&Mode=0
+**About this page**
+
+Our systems have detected unusual traffic from your computer network. This page checks to see if it's really you sending the requests, and not a robot. [Why did this happen?](https://www.google.com/sorry/index?continue=https://webcache.googleusercontent.com/search%3Fq%3Dcache:https%253A%252F%252Fm.rbi.org.in%252Fscripts%252FBS_ViewMasCirculardetails.aspx%253FId%253D4354%2526Mode%253D0&q=EhAmABkAIAAApAAAAAAAAQQAGMnL6rQGIjD8SbPpmd8kJnwZ43mZJGIhfDeDfJfELGjff_tDnMeLdARvTM3cAZPgANnqyPodcUcyAXJaAUM#)
+
+IP address: 2600:1900:2000:a4::1:400  
+Time: 2024-07-19T17:43:37Z  
+URL: https://webcache.googleusercontent.com/search?q=cache:https%3A%2F%2Fm.rbi.org.in%2Fscripts%2FBS\_ViewMasCirculardetails.aspx%3FId%3D4354%26Mode%3D0
