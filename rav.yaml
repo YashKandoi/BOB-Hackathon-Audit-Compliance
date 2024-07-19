@@ -1,0 +1,9 @@
+scripts:
+  server:
+    - cd complicanceAI && python3 manage.py runserver
+  migrations:
+    - cd complicanceAI && python3 manage.py makemigrations
+  migrate:
+    - cd complicanceAI && python3 manage.py migrate
+  frontend:
+    - cd dashboard && reflex run
