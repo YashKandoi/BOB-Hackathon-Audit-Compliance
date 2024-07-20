@@ -104,7 +104,10 @@ def main():
     client = create_client(AZURE_OPENAI_API_KEY)
     assistant = create_assistant(client)
     vector_store = create_vector_store(client, "rbi-guidelines")
-    file_paths = ["data/1.pdf", "data/2.pdf"]
+    file_paths = []
+    for file in os.listdir('azure/RBI_Guidelines_Documents'):
+        if file.endswith('.txt'):
+            file_paths.append(f'azure/RBI_Guidelines_Documents/{file}')
     file_batch = upload_files(client, vector_store, file_paths)
     add_files_to_vector_store(client, vector_store, file_batch)
     assistant = use_vector_store(client, assistant, vector_store)
