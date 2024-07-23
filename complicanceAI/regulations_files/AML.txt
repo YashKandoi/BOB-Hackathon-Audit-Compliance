@@ -1,0 +1,58 @@
+AML Rules: 
+#### Current Account
+**Requirement:** Transaction Monitoring  
+**Description:** Monitor transactions exceeding INR 10 lakhs.  
+**Citation:** RBI Guidelines, Section 1【1:1†source】
+
+**Requirement:** Suspicious Activity Reporting  
+**Description:** Report any suspicious activities to the relevant authorities.  
+**Citation:** RBI Guidelines, Section 1【1:1†source】
+
+#### Savings Account
+**Requirement:** Transaction Monitoring  
+**Description:** Monitor transactions exceeding INR 10 lakhs.  
+**Citation:** RBI Guidelines, Section 1【1:1†source】
+
+**Requirement:** Suspicious Activity Reporting  
+**Description:** Report any suspicious activities to the relevant authorities.  
+**Citation:** RBI Guidelines, Section 1【1:1†source】
+
+#### Salary Account
+**Requirement:** Transaction Monitoring  
+**Description:** Monitor transactions exceeding INR 10 lakhs.  
+**Citation:** RBI Guidelines, Section 1【1:1†source】
+
+**Requirement:** Suspicious Activity Reporting  
+**Description:** Report any suspicious activities to the relevant authorities.  
+**Citation:** RBI Guidelines, Section 1【1:1†source】
+
+#### Fixed Deposit Account
+**Requirement:** Transaction Monitoring  
+**Description:** Monitor transactions exceeding INR 10 lakhs.  
+**Citation:** RBI Guidelines, Section 1【1:1†source】
+
+**Requirement:** Suspicious Activity Reporting  
+**Description:** Report any suspicious activities to the relevant authorities.  
+**Citation:** RBI Guidelines, Section 1【1:1†source】
+
+#### Recurring Deposit Account
+**Requirement:** Transaction Monitoring  
+**Description:** Monitor transactions exceeding INR 10 lakhs.  
+**Citation:** RBI Guidelines, Section 1【1:1†source】
+
+**Requirement:** Suspicious Activity Reporting  
+**Description:** Report any suspicious activities to the relevant authorities.  
+**Citation:** RBI Guidelines, Section 1【1:1†source】
+
+#### NRI Accounts
+**Requirement:** Transaction Monitoring  
+**Description:** Monitor transactions exceeding INR 10 lakhs.  
+**Citation:** RBI Guidelines, Section 1【1:1†source】
+
+**Requirement:** Suspicious Activity Reporting  
+**Description:** Report any suspicious activities to the relevant authorities.  
+**Citation:** RBI Guidelines, Section 1【1:1†source】
+
+---
+
+This format ensures that the compliance requirements are categorized by different user profiles and include proper citations from the RBI guidelines document.

@@ -41,8 +41,3 @@ def save_files(response):
 response = jina_google_search('What are the lastest RBI KYC guidelines for banks?')
 print('Answers received, now saving files...')
 save_files(response)
-
-
-
-
-

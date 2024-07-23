@@ -1,4 +1,5 @@
 import os
+import re
 import time
 from openai import AzureOpenAI
 
@@ -69,6 +70,7 @@ def initialize_vector_store(directory_path):
     )
     
     vector_store = client.beta.vector_stores.create(name="RBI Guidelines")
+    print(vector_store.id)
     
     # List all .txt files in the specified directory
     file_paths = [os.path.join(directory_path, file) for file in os.listdir(directory_path) if file.endswith('.txt')]
@@ -121,27 +123,65 @@ def send_user_question(client, assistant, thread, question):
         messages = client.beta.threads.messages.list(
             thread_id=thread.id
         )
-        return messages
+        count=0
+        answer = ''
+        number_of_messages = len(messages.data)
+        print( f'Number of messages: {number_of_messages}')
+        # Get the latest response only
+        for message in (messages.data):
+            if count!=0:
+                break
+            count = 1
+            role = message.role  
+            for content in message.content:
+                if content.type == 'text':
+                    response = content.text.value 
+                    answer = answer + ' ' + (f'\n{role}: {response}')
+        return answer
     elif run.status == 'requires_action':
         # the assistant requires calling some functions
         # and submit the tool outputs back to the run
         return "requires_action"
     else:
         return run.status
+    
+def save_to_file(final_response):
+    # Use regex to find the sections
+    kyc_match = re.search(r'### KYC\.txt\n(.*?)### AML\.txt', final_response, re.DOTALL)
+    aml_match = re.search(r'### AML\.txt\n(.*)', final_response, re.DOTALL)
+    
+    # Extract the KYC section
+    if kyc_match:
+        kyc_section = kyc_match.group(1).strip()
+    else:
+        kyc_section = "KYC section not found"
 
-# Usage example
-directory_path = "azure/RBI_Guidelines_Documents"
-print("Initializing vector store...")
-client, vector_store = initialize_vector_store(directory_path)
-print("Setting up the assistant...")
-assistant, thread = setup_assistant(client, vector_store)
-print("Loading Answer...")
-response = send_user_question(client, assistant, thread, PROMPT)
-print(response)
-while True:
-    user_question = input("Enter you question or type 'exit' to quit: ")
-    if user_question == 'exit':
-        break
-    response = send_user_question(client, assistant, thread, user_question)
-    print(response)
-print("Thank You!")
+    # Extract the AML section
+    if aml_match:
+        aml_section = aml_match.group(1).strip()
+    else:
+        aml_section = "AML section not found"
+
+    # Write KYC section to a file
+    with open('complicanceAI/regulations_files/KYC.txt', 'w') as kyc_file:
+        kyc_file.write('KYC Rules: \n' + kyc_section)
+
+    # Write AML section to a file
+    with open('complicanceAI/regulations_files/AML.txt', 'w') as aml_file:
+        aml_file.write('AML Rules: \n' + aml_section)
+
+    print("Files created successfully!")
+
+def main():
+    # Usage example
+    directory_path = "azure/RBI_Guidelines_Documents"
+    print("Initializing vector store...")
+    client, vector_store = initialize_vector_store(directory_path)
+    print("Setting up the assistant...")
+    assistant, thread = setup_assistant(client, vector_store)
+    print("Loading Answer...")
+    response = send_user_question(client, assistant, thread, PROMPT)
+    save_to_file(response)
+    print("Files created successfully!")
+
+main()
