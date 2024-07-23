@@ -8,6 +8,6 @@ from rest_framework import status
 base_path = '../azure/RBI_Guidelines_Documents/j_rbi_data_1.txt'
 
 def rbi_guidelines(request):
-    file = open(base_path,'r')
+    file = open(base_path,'r', encoding='utf-8')
     contents = file.read()
     return HttpResponse(contents)
