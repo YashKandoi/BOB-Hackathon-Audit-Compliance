@@ -21,5 +21,6 @@ from complicanceAI import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("RBI_guidelines/", views.rbi_guidelines)
+    path("AML_guidelines/", views.aml_guidelines),
+    path("KYC_guidelines/", views.kyc_guidelines),
 ]
