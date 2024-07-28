@@ -21,9 +21,9 @@ import datetime
 
 
 def _time_data() -> rx.Component:
-    return rx.hstack(
+    return rx.hstack( # stack horizontally
         rx.tooltip(
-            rx.icon("info", size=20),
+            rx.icon("info", size=20), #information symbol
             content=f"{(datetime.datetime.now() - datetime.timedelta(days=30)).strftime('%b %d, %Y')} - {datetime.datetime.now().strftime('%b %d, %Y')}",
         ),
         rx.text("Last 30 days", size="4", weight="medium"),

@@ -37,8 +37,9 @@ link_style = {
 }
 
 overlapping_button_style = {
-    "background_color": "white",
+    # "background_color": "white",
     "border_radius": border_radius,
+    "text_color": "black",
 }
 
 markdown_style = {
@@ -97,4 +98,15 @@ base_stylesheets = [
 
 base_style = {
     "font_family": "Inter",
+}
+
+text_area_style ={
+    "width":"80vh",
+    "height" : "80vh",
+}
+
+tab_trigger_style={
+    "align":"center",
+    "padding_left":"10vh",
+    "padding_right":"10vh",
 }
