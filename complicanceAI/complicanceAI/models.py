@@ -30,6 +30,7 @@ class BankAccount(models.Model):
     account_type = models.CharField(max_length=50, choices=ACCOUNT_TYPE_CHOICES)
     pan_number = models.CharField(max_length=10, unique=True)
     adhaar_number = models.CharField(max_length=12, unique=True)
+    bank_statement = models.FileField(upload_to=f'{name}_{account_type}_bankStatement/', blank=True, null=True)
     other_documents = models.FileField(upload_to=f'{name}_{account_type}_documents/', blank=True, null=True) # like Bank Statement, Salary Slip, etc.
 
     def __str__(self):
