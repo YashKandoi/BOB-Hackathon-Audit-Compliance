@@ -32,7 +32,7 @@ class BankAccount(models.Model):
     adhaar_number = models.CharField(max_length=12, unique=True, null=False)
     bank_statement = models.FileField(upload_to=f'bankStatements/', blank=True, null=True)
     other_documents = models.FileField(upload_to=f'OtherDocuments/', blank=True, null=True) # like Bank Statement, Salary Slip, etc.
-    insights = models.CharField(max_length=1000, null=True)
+    insights = models.CharField(max_length=1000, blank=True, null=True)
 
     def __str__(self):
         return f"{self.name} - {self.account_type}"
