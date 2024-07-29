@@ -30,8 +30,8 @@ class BankAccount(models.Model):
     account_type = models.CharField(max_length=50, choices=ACCOUNT_TYPE_CHOICES, null=False)
     pan_number = models.CharField(max_length=10, unique=True, null=False)
     adhaar_number = models.CharField(max_length=12, unique=True, null=False)
-    bank_statement = models.FileField(upload_to=f'{name}_{account_type}_bankStatement/', blank=True, null=True)
-    other_documents = models.FileField(upload_to=f'{name}_{account_type}_documents/', blank=True, null=True) # like Bank Statement, Salary Slip, etc.
+    bank_statement = models.FileField(upload_to=f'bankStatements/', blank=True, null=True)
+    other_documents = models.FileField(upload_to=f'OtherDocuments/', blank=True, null=True) # like Bank Statement, Salary Slip, etc.
     insights = models.CharField(max_length=1000, null=True)
 
     def __str__(self):
