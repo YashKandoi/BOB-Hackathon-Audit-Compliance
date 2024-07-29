@@ -110,3 +110,7 @@ tab_trigger_style={
     "padding_left":"10vh",
     "padding_right":"10vh",
 }
+
+page_style={
+    "justify_content":"center",
+}

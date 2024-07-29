@@ -1,5 +1,6 @@
 """display data"""
 
+import json 
 from..templates import template
 from .. import styles
 import requests
@@ -7,7 +8,7 @@ import reflex as rx
 
 def get_AML_guidelines():
     x = requests.get("http://127.0.0.1:8000/AML_guidelines/")
-    return x.text
+    return json.loads(x.text)['content']
 
 @template(route="/data",title="data")
 def data()->rx.Component:
@@ -27,7 +28,7 @@ def data()->rx.Component:
                             rx.tabs.content(
                                     rx.flex(
                                         rx.box(
-                                        rx.text(read_text_file("testing.txt")),
+                                        rx.text("get_AML_guidelines()"),
                                     ),
                                         rx.box(
                                         rx.text_area(placeholder="Enter text here...", style=styles.text_area_style),
@@ -41,7 +42,7 @@ def data()->rx.Component:
                             rx.tabs.content(
                                 rx.flex(
                                         rx.box(
-                                        rx.text(read_text_file("testing.txt")),
+                                        rx.text("get_AML_guidelines()"),
                                     ),
                                         rx.box(
                                         rx.text_area(placeholder="Enter text here...", style=styles.text_area_style),
