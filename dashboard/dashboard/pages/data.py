@@ -27,7 +27,7 @@ def data()->rx.Component:
                             rx.tabs.content(
                                     rx.flex(
                                         rx.box(
-                                        rx.text(read_text_file("/Users/adityadeshpande/Desktop/BOB-Hackathon-Audit-Compliance/testing.txt")),
+                                        rx.text(read_text_file("testing.txt")),
                                     ),
                                         rx.box(
                                         rx.text_area(placeholder="Enter text here...", style=styles.text_area_style),
@@ -41,7 +41,7 @@ def data()->rx.Component:
                             rx.tabs.content(
                                 rx.flex(
                                         rx.box(
-                                        rx.text(read_text_file("/Users/adityadeshpande/Desktop/BOB-Hackathon-Audit-Compliance/testing.txt")),
+                                        rx.text(read_text_file("testing.txt")),
                                     ),
                                         rx.box(
                                         rx.text_area(placeholder="Enter text here...", style=styles.text_area_style),
