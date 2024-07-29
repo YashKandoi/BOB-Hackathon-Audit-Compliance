@@ -25,7 +25,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("AML_guidelines/", views.aml_guidelines),
     path("KYC_guidelines/", views.kyc_guidelines),
-    path("create_bank_account/", views.create_bank_account,name='create_bank_account'),
+    path("bank_accounts/", views.bank_accounts),
 ]
 
 if settings.DEBUG:

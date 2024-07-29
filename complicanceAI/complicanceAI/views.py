@@ -1,10 +1,9 @@
 from django.http import JsonResponse
-from .serializers import GuidelinesSerializer, postGuidelinesSerializer
+from .serializers import GuidelinesSerializer, postGuidelinesSerializer, BankAccountSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from django.shortcuts import render, redirect
-from .forms import BankAccountForm
+from complicanceAI.models import BankAccount
 import os
 
 base_path = './regulations_files/'
@@ -60,12 +59,16 @@ def kyc_guidelines(request):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET', 'POST'])
-def create_bank_account(request):
+def bank_accounts(request):
+    if request.method == 'GET':
+        bank_accounts = BankAccount.objects.all()
+        serializer = BankAccountSerializer(bank_accounts, many=True)
+        return JsonResponse(serializer.data, safe=False)
+    
     if request.method == 'POST':
-        form = BankAccountForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('success_url')  # Replace 'success_url' with your desired URL
-    else:
-        form = BankAccountForm()
-    return render(request, 'create_bank_account.html', {'form': form})
+        serializer = BankAccountSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        
+

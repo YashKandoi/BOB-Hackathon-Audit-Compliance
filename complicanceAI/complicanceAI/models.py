@@ -24,14 +24,15 @@ class Compliances(models.Model):
         return self.name
     
 class BankAccount(models.Model):
-    name = models.CharField(max_length=255)
-    age = models.IntegerField()
-    gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
-    account_type = models.CharField(max_length=50, choices=ACCOUNT_TYPE_CHOICES)
-    pan_number = models.CharField(max_length=10, unique=True)
-    adhaar_number = models.CharField(max_length=12, unique=True)
+    name = models.CharField(max_length=255, null=False)
+    age = models.IntegerField(null=False)
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES, null=False)
+    account_type = models.CharField(max_length=50, choices=ACCOUNT_TYPE_CHOICES, null=False)
+    pan_number = models.CharField(max_length=10, unique=True, null=False)
+    adhaar_number = models.CharField(max_length=12, unique=True, null=False)
     bank_statement = models.FileField(upload_to=f'{name}_{account_type}_bankStatement/', blank=True, null=True)
     other_documents = models.FileField(upload_to=f'{name}_{account_type}_documents/', blank=True, null=True) # like Bank Statement, Salary Slip, etc.
+    insights = models.CharField(max_length=1000, null=True)
 
     def __str__(self):
         return f"{self.name} - {self.account_type}"
