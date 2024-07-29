@@ -2,12 +2,12 @@
 
 from..templates import template
 from .. import styles
-
+import requests
 import reflex as rx
 
-def read_text_file(file_path):
-    with open(file_path, 'r') as file:
-        return file.read()
+def get_AML_guidelines():
+    x = requests.get("http://127.0.0.1:8000/AML_guidelines/")
+    return x.text
 
 @template(route="/data",title="data")
 def data()->rx.Component:
