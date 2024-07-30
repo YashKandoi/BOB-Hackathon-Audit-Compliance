@@ -6,7 +6,6 @@ from rest_framework import status
 from complicanceAI.models import BankAccount
 import os
 from .models import BankAccount
-from azure import userBankAccountInsightsGenerator
 
 base_path = './regulations_files/'
 
