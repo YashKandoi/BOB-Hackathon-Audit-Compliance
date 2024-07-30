@@ -54,16 +54,16 @@ class StatsState(rx.State):
             )
 
         self.device_data = [
-            {"name": "Desktop", "value": 23, "fill": "var(--blue-8)"},
-            {"name": "Mobile", "value": 47, "fill": "var(--green-8)"},
-            {"name": "Tablet", "value": 25, "fill": "var(--purple-8)"},
+            {"name": "Savings", "value": 23, "fill": "var(--blue-8)"},
+            {"name": "Current", "value": 47, "fill": "var(--green-8)"},
+            {"name": "FD", "value": 25, "fill": "var(--purple-8)"},
             {"name": "Other", "value": 5, "fill": "var(--red-8)"},
         ]
 
         self.yearly_device_data = [
-            {"name": "Desktop", "value": 34, "fill": "var(--blue-8)"},
-            {"name": "Mobile", "value": 46, "fill": "var(--green-8)"},
-            {"name": "Tablet", "value": 21, "fill": "var(--purple-8)"},
+            {"name": "Savings", "value": 34, "fill": "var(--blue-8)"},
+            {"name": "Current", "value": 46, "fill": "var(--green-8)"},
+            {"name": "FD", "value": 21, "fill": "var(--purple-8)"},
             {"name": "Other", "value": 9, "fill": "var(--red-8)"},
         ]
 

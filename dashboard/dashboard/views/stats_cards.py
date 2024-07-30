@@ -81,15 +81,15 @@ def stats_cards() -> rx.Component:
     return rx.grid(
         stats_card(
             stat_name="Users",
-            value=42,
+            value=107,
             prev_value=30,
             icon="users",
             icon_color="blue",
         ),
         stats_card(
             stat_name="Savings",
-            value=12000,
-            prev_value=15000,
+            value=15000,
+            prev_value=12000,
             icon="indian-rupee",
             icon_color="green",
             extra_char="₹",

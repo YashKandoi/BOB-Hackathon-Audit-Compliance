@@ -58,11 +58,11 @@ def item(
 
 def adquisition() -> rx.Component:
     return rx.vstack(
-        item("USA", "US", 46, "blue"),
-        item("Canada", "CA", 33, "crimson"),
-        item("France", "FR", 28, "plum"),
-        item("Germany", "DE", 20, "green"),
-        item("Spain", "ES", 15, "amber"),
+        item("Delhi", "IN", 46, "orange"),
+        item("Bangalore", "IN", 33, "crimson"),
+        item("Mumbai", "IN", 28, "plum"),
+        item("Pune", "IN", 20, "green"),
+        item("Jaipur", "IN", 15, "amber"),
         width="100%",
         spacing="6",
     )

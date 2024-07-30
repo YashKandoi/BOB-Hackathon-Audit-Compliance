@@ -46,7 +46,7 @@ def index() -> rx.Component:
                 rx.hstack(
                     rx.hstack(
                         rx.icon("user-round-search", size=20),
-                        rx.text("Visitors Analytics", size="4", weight="medium"),
+                        rx.text("Accounts Analytics", size="4", weight="medium"),
                         align="center",
                         spacing="2",
                     ),
@@ -60,7 +60,7 @@ def index() -> rx.Component:
             card(
                 rx.hstack(
                     rx.icon("globe", size=20),
-                    rx.text("Acquisition Overview", size="4", weight="medium"),
+                    rx.text("Bank Branches Overview", size="4", weight="medium"),
                     align="center",
                     spacing="2",
                     margin_bottom="2.5em",
