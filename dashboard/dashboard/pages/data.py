@@ -10,7 +10,11 @@ def get_AML_guidelines():
     x = requests.get("http://127.0.0.1:8000/AML_guidelines/")
     return json.loads(x.text)['content']
 
-@template(route="/data",title="data")
+def get_KYC_guidelines():
+    x = requests.get("http://127.0.0.1:8000/KYC_guidelines/")
+    return json.loads(x.text)['content']
+
+@template(route="/data",title="RBI Guidelines")
 def data()->rx.Component:
     return rx.box(
             rx.flex(
@@ -28,10 +32,15 @@ def data()->rx.Component:
                             rx.tabs.content(
                                     rx.flex(
                                         rx.box(
-                                        rx.text("get_AML_guidelines()"),
+                                        rx.markdown(get_AML_guidelines()),
                                     ),
                                         rx.box(
                                         rx.text_area(placeholder="Enter text here...", style=styles.text_area_style),
+
+                                        rx.flex(
+                                            rx.button("Save", style=styles.overlapping_button_style),
+                                            direction="column",
+                                        ),
                                     ),
                                     
                                     direction="row",
@@ -42,10 +51,14 @@ def data()->rx.Component:
                             rx.tabs.content(
                                 rx.flex(
                                         rx.box(
-                                        rx.text("get_AML_guidelines()"),
+                                        rx.markdown(get_KYC_guidelines()),
                                     ),
                                         rx.box(
                                         rx.text_area(placeholder="Enter text here...", style=styles.text_area_style),
+                                        rx.flex(
+                                            rx.button("Save", style=styles.overlapping_button_style),
+                                            direction="column",
+                                        ),
                                     ),
                                     
                                     direction="row",
@@ -60,11 +73,8 @@ def data()->rx.Component:
                             width="100%"
                         ),
                         rx.box(
-                            rx.flex(
-                                rx.button("Save", style=styles.overlapping_button_style),
-                                rx.button("Download", style=styles.overlapping_button_style),
-                                spacing="4",
-                            ),
+                            rx.button("Download", style=styles.overlapping_button_style),
+                            direction="column",
                             width="100%",
                         ),
                     direction="column",

@@ -14,10 +14,12 @@ class FormState(rx.State):
 @template(route="/createAccount", title="Create Account")
 def createAccount() -> rx.Component:
     return rx.box(
+        
         rx.flex(
+            
             rx.box(
                 rx.heading("Create Account", as_="h1"),
-                width="100%",
+                
             ),
             rx.box(
                 rx.form(
@@ -54,20 +56,24 @@ def createAccount() -> rx.Component:
                         name="adhaar_number",
                         required=True,
                     ),
-                    rx.upload(
+                    rx.flex(
+                        rx.upload(
                             rx.text(
                                 "Drag and drop Bank Statement here or click to select files"
                             ),
                             id="my_upload1",
                             border="1px dotted rgb(107,99,246)",
                         ),
-                    rx.upload(
-                            rx.text(
-                                "Drag and drop Other Documents here or click to select files"
-                            ),
-                            id="my_upload2",
-                            border="1px dotted rgb(107,99,246)",
+                        rx.upload(
+                                rx.text(
+                                    "Drag and drop Other Documents here or click to select files"
+                                ),
+                                id="my_upload2",
+                                border="1px dotted rgb(107,99,246)",
                         ),
+                        direction="row",
+                    ),
+                    
                     rx.hstack(
                         rx.checkbox("Checked", name="check"),
                         rx.switch("Switched", name="switch"),
@@ -89,3 +95,4 @@ def createAccount() -> rx.Component:
             ),
             width="100%",
         ),
+        
