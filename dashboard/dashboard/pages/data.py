@@ -14,6 +14,20 @@ def get_KYC_guidelines():
     x = requests.get("http://127.0.0.1:8000/KYC_guidelines/")
     return json.loads(x.text)['content']
 
+def post_KYC_guidelines(new_content):
+    url = "http://127.0.0.1:8000/KYC_guidelines/"
+    headers = {'Content-Type': 'application/json'}
+    data = {
+        'content': new_content
+    }
+    response = requests.post(url, headers=headers, data=json.dumps(data))
+    
+    if response.status_code == 200:
+        return json.loads(response.text)
+    else:
+        return {'error': response.text}
+
+
 @template(route="/data",title="RBI Guidelines")
 def data()->rx.Component:
     return rx.box(
@@ -54,7 +68,7 @@ def data()->rx.Component:
                                         rx.markdown(get_KYC_guidelines()),
                                     ),
                                         rx.box(
-                                        rx.text_area(placeholder="Enter text here...", style=styles.text_area_style),
+                                        rx.text_area(placeholder="Enter text here...",style=styles.text_area_style,),
                                         rx.flex(
                                             rx.button("Save", style=styles.overlapping_button_style),
                                             direction="column",
