@@ -61,6 +61,7 @@ def createAccount() -> rx.Component:
                             ),
                             id="my_upload1",
                             border="1px dotted rgb(107,99,246)",
+                            # on_click= rx.text("Upload Bank Statement"),
                         ),
                         rx.upload(
                                 rx.text(
@@ -68,6 +69,7 @@ def createAccount() -> rx.Component:
                                 ),
                                 id="my_upload2",
                                 border="1px dotted rgb(107,99,246)",
+                                # on_click= rx.text("Upload Other Documents"),
                             ),
                         direction="row",
                         spacing="4",
