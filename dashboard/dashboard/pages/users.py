@@ -39,35 +39,59 @@ def show_person(person: list):
         rx.table.cell(person[4]),
         rx.table.cell(person[5]),
         rx.table.cell(
-            rx.button("View", 
+            rx.button("Download", 
                       style=styles.overlapping_button_style), 
                     #   on_click=lambda: view_user(person[4]))  # Assuming person[3] is the user ID
         ),
+        align="center",
+        width="100%",
     )
 
 def view_user(user_id: int):
     UserDetailState.fetch_person(user_id)
     return rx.redirect("/user_detail", external=False)
 
-@template(route="/users", title="Users")
-def users() -> rx.Component:
-    return rx.table.root(
-        rx.table.header(
-            rx.table.row(
-                rx.table.column_header_cell("Name"),
-                rx.table.column_header_cell("Age"),
-                rx.table.column_header_cell("Gender"),
-                rx.table.column_header_cell("Account Type"),
-                rx.table.column_header_cell("PAN Number"),
-                rx.table.column_header_cell("Adhaar Number"),
-            ),
-        ),
-        rx.table.body(
-            rx.foreach(
-                TableForEachState.people, show_person
-            )
+def _header_cell(text: str, icon: str):
+    return rx.table.column_header_cell(
+        rx.hstack(
+            rx.icon(icon, size=18),
+            rx.text(text),
+            align="center",
+            spacing="2",
         ),
     )
+
+@template(route="/users", title="Users")
+def users() -> rx.Component:
+    return rx.flex(
+        rx.box(
+                rx.heading("Bank Accounts", as_="h1"),
+                width="100%",
+        ),
+        rx.table.root(
+            rx.table.header(
+                rx.table.row(
+                    _header_cell("Name","user"),
+                    _header_cell("Age","calendar"),
+                    _header_cell("Gender","person-standing"),
+                    _header_cell("Account Type","wallet-cards"),
+                    _header_cell("PAN Number","credit-card"),
+                    _header_cell("Adhaar Number","contact-round"),
+                    _header_cell("Audit Report", "file-down"),
+                ),
+            ),
+            rx.table.body(
+                rx.foreach(
+                    TableForEachState.people, show_person
+                )
+            ),
+            width="100%",
+            align="center",
+        ),
+        direction="column",
+        spacing="4",
+    )
+    
 
 # @template(route="/user_detail", title="User Detail")
 # def user_detail() -> rx.Component:

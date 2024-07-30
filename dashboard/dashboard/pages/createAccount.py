@@ -84,9 +84,9 @@ def createAccount() -> rx.Component:
             reset_on_submit=True,
             ),
             rx.divider(),
-            rx.heading("Results"),
-            rx.text(FormState.form_data.to_string()),
-            width="80%"
+            #rx.heading("Results"),
+            #rx.text(FormState.form_data.to_string()),
+            width="80%",
             ),
             direction="column",
             spacing="4",
