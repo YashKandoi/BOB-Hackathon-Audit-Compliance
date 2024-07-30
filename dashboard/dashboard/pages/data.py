@@ -1,6 +1,6 @@
 """display data"""
 
-import json 
+import json
 from..templates import template
 from .. import styles
 import requests
