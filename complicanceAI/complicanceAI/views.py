@@ -5,6 +5,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from complicanceAI.models import BankAccount
 import os
+from .models import BankAccount
+from azure import userBankAccountInsightsGenerator
 
 base_path = './regulations_files/'
 
@@ -70,5 +72,26 @@ def bank_accounts(request):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-        
 
+@api_view(['GET', 'PUT', 'DELETE'])    
+def get_user_account_details(request, adhaar_number, account_type, format = None):
+    try:
+        # get account of account_holder_name and account_type
+        account = BankAccount.objects.get(adhaar_number=adhaar_number, account_type=account_type)
+    except BankAccount.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    
+    if request.method == 'GET':
+        serializer = BankAccountSerializer(account,many=False)
+        return Response(serializer.data)
+    
+    elif request.method == 'PUT':
+        serializer = BankAccountSerializer(account, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    elif request.method == 'DELETE':
+        account.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

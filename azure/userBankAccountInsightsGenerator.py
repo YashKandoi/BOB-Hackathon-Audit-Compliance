@@ -3,39 +3,18 @@ import random
 import re
 import time
 from openai import AzureOpenAI
+import requests
 
 AZURE_OPENAI_API_KEY = "939de1ef4c4e439dbaad834c55551410"
 AZURE_OPENAI_ENDPOINT = "https://second-openai-resource.openai.azure.com/"
 # VECTOR_STORE_ID = ""
-ACCOUNT_DETAILS = { 
-    "name": "Yash Kumar Kandoi", 
-    "age": 21, 
-    "gender": "M", 
-    "account_type": "SAVINGS", 
-    "pan_number": "KYUI12345H", 
-    "adhaar_number": "123412341234",
-    "bank_statement": "/media/bankStatements/sbi_yash_pdf.pdf", 
-    "other_documents": "null",
-    "insights": "insight" 
-}
-# Write multiline string
-PROMPT = f"""You are tasked with generating compliance insights for a bank account based on account details, KYC guidelines, AML guidelines, and the bank statement.   
-The account details are: - {ACCOUNT_DETAILS}.  
-The bank statement has been uploaded.  
-The KYC guidelines are also uploaded.  
-The AML guidelines are also uploaded.  
-Provide a comprehensive compliance insight report that includes:   
-1. KYC compliance status and any missing documents.   
-2. AML compliance status and any suspicious transactions.  
-3. Recommendations for maintaining compliance.
-"""
 
 # create a function to output a random number between 1 and 100
 def random_number():
     # return name from Account Details when it is integrated in JSON format
     return random.randint(1, 100)
 
-def initialize_vector_store(directory_path):
+def initialize_vector_store(file_paths):
     client = AzureOpenAI(
         api_key=(AZURE_OPENAI_API_KEY),
         api_version="2024-05-01-preview",
@@ -44,9 +23,6 @@ def initialize_vector_store(directory_path):
     
     vector_store = client.beta.vector_stores.create(name=f"User Bank Account Insights-{random_number()}")
     print(vector_store.id)
-    
-    # List all files in the specified directory
-    file_paths = [os.path.join(directory_path, file) for file in os.listdir(directory_path)]
     
     file_streams = [open(path, "rb") for path in file_paths]
     
@@ -118,21 +94,57 @@ def send_user_question(client, assistant, thread, question):
     else:
         return run.status
     
-def save_to_file(final_response):
+def save_to_file(final_response,account_holder_name,account_type):
     # Write response to a file
-    with open('azure/InsightsResponse.txt', 'w') as file:
+    with open(f'azure/AuditReports/AuditReport-{account_holder_name}-{account_type}.txt', 'w') as file:
         file.write(final_response)
 
-def main():
-    # Usage example
-    directory_path = "azure/UserBankAccount_Documents"
+def main(account_holder_adhaar_number, account_type):
+
+    # Getting User Account Details and their documents
+    print("Fetching account details...")
+    account = requests.get("http://127.0.0.1:8000/bank_accounts/"+account_holder_adhaar_number+"/"+account_type+"/")
+    ACCOUNT_DETAILS = account.json()
+    print(ACCOUNT_DETAILS)
+    media_base_path = "complicanceAI/complicanceAI"
+    bank_statement = media_base_path + ACCOUNT_DETAILS.get("bank_statement")
+    if(ACCOUNT_DETAILS.get("other_documents") == None):
+        list_of_file_paths = [bank_statement, "complicanceAI/regulations_files/KYC.txt", "complicanceAI/regulations_files/AML.txt"]
+    else:
+        other_documents = media_base_path + ACCOUNT_DETAILS.get("other_documents")
+        list_of_file_paths = [bank_statement, other_documents, "complicanceAI/regulations_files/KYC.txt", "complicanceAI/regulations_files/AML.txt"]
+    
+    PROMPT = f"""You are tasked with generating compliance insights for a bank account based on account details, KYC guidelines, AML guidelines, and the bank statement.   
+    The account details are: - {ACCOUNT_DETAILS}.  
+    The bank statement has been uploaded.  
+    The KYC guidelines are also uploaded.  
+    The AML guidelines are also uploaded.  
+    Provide a comprehensive compliance insight report that includes:   
+    1. KYC compliance status and any missing documents.   
+    2. AML compliance status and any suspicious transactions.  
+    3. Recommendations for maintaining compliance.
+    """
+
     print("Initializing vector store...")
-    client, vector_store = initialize_vector_store(directory_path)
+    client, vector_store = initialize_vector_store(list_of_file_paths)
     print("Setting up the assistant...")
     assistant, thread = setup_assistant(client, vector_store)
     print("Loading Answer...")
     response = send_user_question(client, assistant, thread, PROMPT)
-    save_to_file(response)
-    print("Files created successfully!")
+    requests.put(
+        "http://127.0.0.1:8000/bank_accounts/"+account_holder_adhaar_number+"/"+account_type+"/",
+        data={
+        "name": ACCOUNT_DETAILS.get("name"),
+        "age": ACCOUNT_DETAILS.get("age"),
+        "gender": ACCOUNT_DETAILS.get("gender"),
+        "account_type": ACCOUNT_DETAILS.get("account_type"),
+        "pan_number": ACCOUNT_DETAILS.get("pan_number"),
+        "adhaar_number": ACCOUNT_DETAILS.get("adhaar_number"),
+        "insights":response
+    })
+    account_holder_name = ACCOUNT_DETAILS.get("name")
+    save_to_file(response,account_holder_name,account_type)
+    print("Insights added successfully!")
 
-main()
+if __name__ == '__main__':
+    main("123412341234", "SAVINGS")

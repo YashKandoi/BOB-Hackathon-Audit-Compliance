@@ -20,12 +20,15 @@ from django.contrib import admin
 from django.urls import path
 from complicanceAI import views
 from django.conf.urls.static import static
+from .views import get_user_account_details, aml_guidelines, kyc_guidelines, bank_accounts
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("AML_guidelines/", views.aml_guidelines),
-    path("KYC_guidelines/", views.kyc_guidelines),
-    path("bank_accounts/", views.bank_accounts),
+    path("AML_guidelines/", aml_guidelines),
+    path("KYC_guidelines/", kyc_guidelines),
+    path("bank_accounts/", bank_accounts),
+    path('bank_accounts/<str:adhaar_number>/<str:account_type>/', get_user_account_details, name='get_user_account_details'),
+
 ]
 
 if settings.DEBUG:

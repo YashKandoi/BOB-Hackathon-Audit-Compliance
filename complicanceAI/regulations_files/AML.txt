@@ -1,54 +1,54 @@
 AML Rules: 
+#### Individual Savings Account
+**Requirement:** Transaction Monitoring  
+**Description:** Monitor transactions exceeding INR 10 lakhs.  
+**Citation:** RBI Guidelines 2024, Section 6【4:6†source】
+
+**Requirement:** Suspicious Activity Reporting  
+**Description:** Report any suspicious activities to the relevant authorities.  
+**Citation:** RBI Guidelines 2024, Section 6【4:6†source】
+
 #### Current Account
-**Requirement: Transaction Monitoring**
-- **Description:** Monitor transactions exceeding INR 10 lakhs.
-- **Citation:** RBI Guidelines 2024, Section 5【4:5†source】
+**Requirement:** Enhanced Due Diligence  
+**Description:** Conduct enhanced due diligence for high-risk businesses.  
+**Citation:** RBI Guidelines 2024, Section 5A【4:13†source】
 
-**Requirement: Suspicious Activity Reporting**
-- **Description:** Report any suspicious activities to the relevant authorities.
-- **Citation:** RBI Guidelines 2024, Section 5【4:5†source】
-
-#### Savings Account
-**Requirement: Transaction Monitoring**
-- **Description:** Monitor transactions exceeding INR 10 lakhs.
-- **Citation:** RBI Guidelines 2024, Section 5【4:5†source】
-
-**Requirement: Suspicious Activity Reporting**
-- **Description:** Report any suspicious activities to the relevant authorities.
-- **Citation:** RBI Guidelines 2024, Section 5【4:5†source】
+**Requirement:** Periodic Review  
+**Description:** Perform periodic reviews of the account activities.  
+**Citation:** RBI Guidelines 2024, Section 5A【4:13†source】
 
 #### Salary Account
-**Requirement: Transaction Monitoring**
-- **Description:** Monitor transactions exceeding INR 10 lakhs.
-- **Citation:** RBI Guidelines 2024, Section 5【4:5†source】
+**Requirement:** Transaction Monitoring  
+**Description:** Monitor transactions exceeding INR 10 lakhs.  
+**Citation:** RBI Guidelines 2024, Section 6【4:6†source】
 
-**Requirement: Suspicious Activity Reporting**
-- **Description:** Report any suspicious activities to the relevant authorities.
-- **Citation:** RBI Guidelines 2024, Section 5【4:5†source】
+**Requirement:** Suspicious Activity Reporting  
+**Description:** Report any suspicious activities to the relevant authorities.  
+**Citation:** RBI Guidelines 2024, Section 6【4:6†source】
 
 #### Fixed Deposit Account
-**Requirement: Transaction Monitoring**
-- **Description:** Monitor transactions exceeding INR 10 lakhs.
-- **Citation:** RBI Guidelines 2024, Section 5【4:5†source】
+**Requirement:** Transaction Monitoring  
+**Description:** Monitor transactions exceeding INR 10 lakhs.  
+**Citation:** RBI Guidelines 2024, Section 6【4:6†source】
 
-**Requirement: Suspicious Activity Reporting**
-- **Description:** Report any suspicious activities to the relevant authorities.
-- **Citation:** RBI Guidelines 2024, Section 5【4:5†source】
+**Requirement:** Suspicious Activity Reporting  
+**Description:** Report any suspicious activities to the relevant authorities.  
+**Citation:** RBI Guidelines 2024, Section 6【4:6†source】
 
 #### Recurring Deposit Account
-**Requirement: Transaction Monitoring**
-- **Description:** Monitor transactions exceeding INR 10 lakhs.
-- **Citation:** RBI Guidelines 2024, Section 5【4:5†source】
+**Requirement:** Transaction Monitoring  
+**Description:** Monitor transactions exceeding INR 10 lakhs.  
+**Citation:** RBI Guidelines 2024, Section 6【4:6†source】
 
-**Requirement: Suspicious Activity Reporting**
-- **Description:** Report any suspicious activities to the relevant authorities.
-- **Citation:** RBI Guidelines 2024, Section 5【4:5†source】
+**Requirement:** Suspicious Activity Reporting  
+**Description:** Report any suspicious activities to the relevant authorities.  
+**Citation:** RBI Guidelines 2024, Section 6【4:6†source】
 
 #### NRI Accounts
-**Requirement: Transaction Monitoring**
-- **Description:** Monitor transactions exceeding INR 10 lakhs.
-- **Citation:** RBI Guidelines 2024, Section 5【4:5†source】
+**Requirement:** Enhanced Due Diligence  
+**Description:** Conduct enhanced due diligence for high-risk accounts.  
+**Citation:** RBI Guidelines 2024, Section 5A【4:13†source】
 
-**Requirement: Suspicious Activity Reporting**
-- **Description:** Report any suspicious activities to the relevant authorities.
-- **Citation:** RBI Guidelines 2024, Section 5【4:5†source】
+**Requirement:** Periodic Review  
+**Description:** Perform periodic reviews of the account activities.  
+**Citation:** RBI Guidelines 2024, Section 5A【4:13†source】

@@ -37,7 +37,10 @@ def save_files(response):
                 f.close()
             print(f"rbi_data_{file_number}.txt saved successfully.")
 
-# Example usage
-response = jina_google_search('What are the lastest RBI KYC guidelines for banks?')
-print('Answers received, now saving files...')
-save_files(response)
+def main():
+    # clear the directory "azure/RBI_Guidelines_Document" before saving new files
+    for file in os.listdir('azure/RBI_Guidelines_Documents'):
+        os.remove(f'azure/RBI_Guidelines_Documents/{file}')
+    response = jina_google_search('What are the lastest RBI KYC guidelines for banks?')
+    print('Answers received, now saving files...')
+    save_files(response)

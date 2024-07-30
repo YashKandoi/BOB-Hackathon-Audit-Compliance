@@ -174,6 +174,8 @@ def save_to_file(final_response):
 
 def main():
     # Usage example
+    for file in os.listdir('complicanceAI/regulations_files'):
+        os.remove(f'complicanceAI/regulations_files/{file}')
     directory_path = "azure/RBI_Guidelines_Documents"
     print("Initializing vector store...")
     client, vector_store = initialize_vector_store(directory_path)
@@ -181,7 +183,6 @@ def main():
     assistant, thread = setup_assistant(client, vector_store)
     print("Loading Answer...")
     response = send_user_question(client, assistant, thread, PROMPT)
+    # remove old files
     save_to_file(response)
     print("Files created successfully!")
-
-main()
