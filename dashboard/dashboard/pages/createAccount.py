@@ -14,12 +14,10 @@ class FormState(rx.State):
 @template(route="/createAccount", title="Create Account")
 def createAccount() -> rx.Component:
     return rx.box(
-        
         rx.flex(
-            
             rx.box(
                 rx.heading("Create Account", as_="h1"),
-                
+                width="100%",
             ),
             rx.box(
                 rx.form(
@@ -70,13 +68,13 @@ def createAccount() -> rx.Component:
                                 ),
                                 id="my_upload2",
                                 border="1px dotted rgb(107,99,246)",
-                        ),
+                            ),
                         direction="row",
+                        spacing="4",
                     ),
                     
                     rx.hstack(
-                        rx.checkbox("Checked", name="check"),
-                        rx.switch("Switched", name="switch"),
+                        rx.checkbox("I agree to terms and conditions", name="check"),
                     ),
                     rx.button("Submit", type="submit"),
                     direction="column",
@@ -88,11 +86,10 @@ def createAccount() -> rx.Component:
             rx.divider(),
             rx.heading("Results"),
             rx.text(FormState.form_data.to_string()),
-            width="30%"
+            width="80%"
             ),
             direction="column",
             spacing="4",
             ),
             width="100%",
         ),
-        
