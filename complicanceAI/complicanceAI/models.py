@@ -10,8 +10,8 @@ ACCOUNT_TYPE_CHOICES = [
         ('SAVINGS', 'Savings'),
         ('CURRENT', 'Current'),
         ('SALARY', 'Salary'),
-        ('FD', 'Fixed Deposit'),
-        ('RD', 'Recurring Deposit'),
+        ('FixedDeposit', 'FixedDeposit'),
+        ('RecurringDeposit', 'RecurringDeposit'),
         ('NRI', 'NRI'),
     ]
 

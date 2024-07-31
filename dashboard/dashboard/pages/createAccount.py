@@ -13,30 +13,88 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(
 
 from azure.userBankAccountInsightsGenerator import main as userBankAccountInsightsGenerator
 
+counter = 1
+
+class State(rx.State):
+    async def handle_upload(self, files: list[rx.UploadFile]):
+        upload_dir = rx.get_upload_dir() / str(counter)
+        os.makedirs(upload_dir, exist_ok=True)
+        for file in files:
+            upload_data = await file.read()
+            outfile = upload_dir / file.filename
+            # Save the file.
+            with outfile.open("wb") as file_object:
+                file_object.write(upload_data)
+        
+        return rx.window_alert(f"{files[0].filename} uploaded sucessfully!")
+
 class FormState(rx.State):
     form_data: dict = {}
 
     def handle_submit(self, form_data: dict): #get input from user
         """Handle the form submit."""
+        global counter
         self.form_data = form_data
+        print(form_data)
         # self.send_data_to_server(form_data)
-        # return rx.window_alert("Account created successfully!")
+        counter = counter + 1
         # self.generate_account_audit_report(form_data["adhaar_number"], form_data["account_type"])
+        # return rx.window_alert("Account created successfully!")
 
     def send_data_to_server(self, form_data: dict):
+        file_dir = rx.get_upload_dir() / str(counter)
+        os.makedirs(file_dir, exist_ok=True)
 
-        json_data = json.dumps(form_data)
-        print(json_data)
+        bank_statement = ""
+        other_documents = ""
+
+        for filename in os.listdir(file_dir):
+            file_path = os.path.join(file_dir, filename)
+            if 'bank' in filename.lower() or 'statement' in filename.lower():
+                bank_statement = file_path
+            else:
+                other_documents = file_path
+
+
+        print(bank_statement)
+        print(other_documents)
+
+        # Prepare the data and files to be sent
         url = 'http://127.0.0.1:8000/bank_accounts/'
-        headers = {
-            'Content-Type': 'application/json',
+
+        # Convert form_data to a dictionary of tuples, with each key having a tuple of (None, value)
+        # This allows combining form data with file uploads in a single request
+        data = {
+            'name': form_data['name'],
+            'age': form_data['age'],
+            'gender': form_data['gender'],
+            'account_type': form_data['account_type'],
+            'pan_number': form_data['pan_number'],
+            'adhaar_number': form_data['adhaar_number'],
         }
 
-        response = requests.post(url, data=json_data, headers=headers)
-        if response.status_code == 201:
-            print("Data successfully sent to server.")
-        else:
-            print(f"Failed to send data. Status code: {response.status_code}, Response: {response.text}")
+        files = {
+            'bank_statement': open(bank_statement, 'rb'),
+        }
+
+        if other_documents:
+            files['other_documents'] = open(other_documents, 'rb')
+
+        print(data)
+        print(files)
+
+        response = requests.post(url, files=files, data=data)
+
+        # Close the files after the request
+        files['bank_statement'].close()
+        if other_documents:
+            files['other_documents'].close()
+
+        # if response.status_code == 201:
+        #     print("Data successfully sent to server.")
+        # else:
+        #     print(f"Failed to send data. Status code: {response.status_code}, Response: {response.text}")
+
 
     def generate_account_audit_report(self, account_adhaar_number: str, account_type: str):
         # Define the URL for the GET request
@@ -71,12 +129,14 @@ def createAccount() -> rx.Component:
                         ["Male", "Female", "Other"],
                         placeholder="Select your Gender",
                         label="Gender",
+                        name= "gender",
                         required=True,
                     ),
                     rx.select(
-                        ["Savings", "Current", "Salary", "Fixed Deposit", "Recurring Deposit", "NRI"],
+                        ["SAVINGS", "CURRENT", "SALARY", "FixedDeposit", "RecurringDeposit", "NRI"],
                         placeholder="Select Account Type",
                         label="Account Type",
+                        name="account_type",
                         required=True,
                     ),
                     rx.input(
@@ -91,20 +151,20 @@ def createAccount() -> rx.Component:
                     ),
                     rx.flex(
                         rx.upload(
-                            rx.text(
-                                "Drag and drop Bank Statement here or click to select files"
-                            ),
-                            id="my_upload1",
-                            border="1px dotted rgb(107,99,246)",
-                            # on_click= rx.text("Upload Bank Statement"),
-                        ),
-                        rx.upload(
-                                rx.text(
-                                    "Drag and drop Other Documents here or click to select files"
-                                ),
-                                id="my_upload2",
+                                rx.text("Upload Bank Statement as bank_statement.pdf"),
+                                rx.icon(tag="upload"),
                                 border="1px dotted rgb(107,99,246)",
-                                # on_click= rx.text("Upload Other Documents"),
+                                padding="5em",
+                                on_drop=State.handle_upload(rx.upload_files(upload_id="bank_statements")),
+                                multiple=False,
+                            ),
+                        rx.upload(
+                                rx.text("Upload Other Documents"),
+                                rx.icon(tag="upload"),
+                                border="1px dotted rgb(107,99,246)",
+                                padding="5em",
+                                on_drop=State.handle_upload(rx.upload_files(upload_id="other_documents")),
+                                 multiple=False,
                             ),
                         direction="row",
                         spacing="4",
@@ -121,8 +181,6 @@ def createAccount() -> rx.Component:
             reset_on_submit=True,
             ),
             rx.divider(),
-            #rx.heading("Results"),
-            #rx.text(FormState.form_data.to_string()),
             width="80%",
             ),
             direction="column",
