@@ -70,7 +70,9 @@ def bank_accounts(request):
         serializer = BankAccountSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            context = {'data':serializer.data, 'message':'Data successfully saved'}
+            return Response(context, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET', 'PUT', 'DELETE'])    
 def get_user_account_details(request, adhaar_number, account_type, format = None):
