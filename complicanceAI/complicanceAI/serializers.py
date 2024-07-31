@@ -18,12 +18,12 @@ ACCOUNT_TYPE_CHOICES = [
 
 class GuidelinesSerializer(serializers.Serializer):
     file = serializers.CharField(max_length=100)
-    content = serializers.CharField(max_length=1000)
+    content = serializers.CharField(max_length=10000)
     class Meta:
         fields = ['file', 'content']
 
 class postGuidelinesSerializer(serializers.Serializer):
-    content = serializers.CharField(max_length=1000)
+    content = serializers.CharField(max_length=10000)
     class Meta:
         fields = ['content']
 
