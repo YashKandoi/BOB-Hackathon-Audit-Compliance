@@ -36,12 +36,15 @@ class FormState(rx.State):
         global counter
         self.form_data = form_data
         print(form_data)
-        self.send_data_to_server(form_data)
+        status_code = self.send_data_to_server(form_data)
         counter = counter + 1
-        adhaar_number = form_data["adhaar_number"]
-        account_type = form_data["account_type"]
-        # self.generate_account_audit_report(adhaar_number, account_type)
-        # return rx.window_alert("Account created successfully!")
+        if status_code == 201:
+            adhaar_number = form_data["adhaar_number"]
+            account_type = form_data["account_type"]
+            response = self.generate_account_audit_report(adhaar_number, account_type)
+            return rx.window_alert("Account created successfully!")
+        else:
+            return rx.window_alert("Failed to create account. Please try again.")
 
     def send_data_to_server(self, form_data: dict):
         
@@ -103,6 +106,8 @@ class FormState(rx.State):
         else:
             print(f"Failed to send data. Status code: {response.status_code}")
             print(f"Response content: {response.content}")
+        
+        return response.status_code
 
 
     def generate_account_audit_report(self, account_adhaar_number: str, account_type: str):

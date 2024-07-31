@@ -1,3 +1,4 @@
+Report Generated on time.struct_time(tm_year=2024, tm_mon=8, tm_mday=1, tm_hour=0, tm_min=16, tm_sec=59, tm_wday=3, tm_yday=214, tm_isdst=0)
  
 assistant: ### Compliance Insight Report for Yash Kandoi
 
@@ -5,7 +6,7 @@ assistant: ### Compliance Insight Report for Yash Kandoi
 
 **KYC Requirements for Individual Savings Account:**
 - **Proof of Identity:** Submit a valid Aadhaar card or PAN card.
-- **Proof of Address:** Submit a recent utility bill or rent agreement【4:0†source】.
+- **Proof of Address:** Submit a recent utility bill or rent agreement【4:0†KYC.txt】【4:0†KYC.txt】.
 
 **Provided Documents:**
 - **PAN Number:** KYUI12345H
@@ -21,16 +22,16 @@ assistant: ### Compliance Insight Report for Yash Kandoi
 
 **AML Requirements for Individual Savings Account:**
 - **Transaction Monitoring:** Monitor transactions exceeding INR 10 lakhs.
-- **Suspicious Activity Reporting:** Report any suspicious activities to the relevant authorities【4:1†source】.
+- **Suspicious Activity Reporting:** Report any suspicious activities to the relevant authorities【4:1†AML.txt】【4:1†AML.txt】.
 
 **Transaction Analysis:**
 - **High-Value Transactions:**
-  - **Credit:** INR 1,10,000 on 21 Mar 2024【4:6†source】.
-  - **Debit:** INR 1,12,616 on 21 Mar 2024【4:6†source】.
-  - **Credit:** INR 20,000 on multiple occasions【4:2†source】【4:3†source】【4:5†source】【4:12†source】.
+  - **Credit:** INR 1,10,000 on 21 Mar 2024【4:6†sbi_yash_pdf.pdf】.
+  - **Debit:** INR 1,12,616 on 21 Mar 2024【4:6†sbi_yash_pdf.pdf】.
+  - **Credit:** INR 20,000 on multiple occasions【4:2†sbi_yash_pdf.pdf】【4:3†sbi_yash_pdf.pdf】【4:5†sbi_yash_pdf.pdf】【4:12†sbi_yash_pdf.pdf】.
 
 **Suspicious Transactions:**
-- **Frequent Small Transfers:** Numerous small transactions (e.g., INR 10, INR 20, INR 50) to various accounts, which could be indicative of structuring or smurfing to avoid detection【4:2†source】【4:3†source】【4:4†source】【4:5†source】【4:6†source】【4:7†source】【4:8†source】【4:9†source】【4:10†source】【4:11†source】【4:12†source】【4:13†source】【4:14†source】【4:15†source】【4:16†source】【4:17†source】【4:18†source】.
+- **Frequent Small Transfers:** Numerous small transactions (e.g., INR 10, INR 20, INR 50) to various accounts, which could be indicative of structuring or smurfing to avoid detection【4:2†sbi_yash_pdf.pdf】【4:3†sbi_yash_pdf.pdf】【4:4†sbi_yash_pdf.pdf】【4:5†sbi_yash_pdf.pdf】【4:6†sbi_yash_pdf.pdf】【4:7†sbi_yash_pdf.pdf】【4:8†sbi_yash_pdf.pdf】【4:9†sbi_yash_pdf.pdf】【4:10†sbi_yash_pdf.pdf】【4:11†sbi_yash_pdf.pdf】【4:12†sbi_yash_pdf.pdf】【4:13†sbi_yash_pdf.pdf】【4:14†sbi_yash_pdf.pdf】【4:15†sbi_yash_pdf.pdf】【4:16†sbi_yash_pdf.pdf】【4:17†sbi_yash_pdf.pdf】【4:18†sbi_yash_pdf.pdf】.
 
 **AML Compliance Status:**
 - **Non-Compliant:** The account shows signs of suspicious activity due to frequent small transfers and high-value transactions that need to be reported and investigated further.
