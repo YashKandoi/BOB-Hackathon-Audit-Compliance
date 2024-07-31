@@ -144,7 +144,8 @@ def main(account_holder_adhaar_number, account_type):
     })
     account_holder_name = ACCOUNT_DETAILS.get("name")
     save_to_file(response,account_holder_name,account_type)
-    print("Insights added successfully!")
+    print("Audit Report Insights added successfully!")
+    return response
 
-if __name__ == '__main__':
-    main("123412341234", "SAVINGS")
+# if __name__ == '__main__':
+#     main("123412341234", "SAVINGS")

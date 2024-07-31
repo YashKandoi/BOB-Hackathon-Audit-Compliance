@@ -1,6 +1,15 @@
 from .. import styles
 from ..templates import template
 
+import sys
+import os
+
+# Add the top-level project directory to sys.path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))))
+
+from azure.userBankAccountInsightsGenerator import main as userBankAccountInsightsGenerator
+
+
 import reflex as rx
 import requests as rq
 
@@ -17,6 +26,29 @@ def get_user(user_id: int):
     for item in data:
         result=rx.cond(item["pan_number"]==user_id,item,[])
     return result
+
+def get_account_audit_report(account_adhaar_number : str, account_type: str):
+    response = rq.get("http://127.0.0.1:8000/bank_accounts/" + account_adhaar_number + "/" + account_type+"/")
+    data = response.json()
+    audit_report = data["insights"]
+    if audit_report is None:
+        response = userBankAccountInsightsGenerator(account_adhaar_number, account_type)
+        return response
+    return audit_report
+
+class DownloadAuditReport(rx.State):
+    is_loading: bool = False
+
+    def download(self, name, account_adhaar_number: str, account_type: str):
+        self.is_loading = True
+        yield
+        audit_report = get_account_audit_report(account_adhaar_number, account_type)
+        self.is_loading = False
+        return rx.download(
+            data=audit_report,
+            filename=f"{name}_{account_type}_audit_report.txt",
+        )
+        
 
 class TableForEachState(rx.State):
     people: list[list] = get_people()
@@ -40,8 +72,10 @@ def show_person(person: list):
         rx.table.cell(person[5]),
         rx.table.cell(
             rx.button("Download", 
-                      style=styles.overlapping_button_style), 
-                    #   on_click=lambda: view_user(person[4]))  # Assuming person[3] is the user ID
+                      style=styles.overlapping_button_style,
+                      on_click=lambda: DownloadAuditReport.download(person[0],person[5], person[3]),
+                      loading=DownloadAuditReport.is_loading,
+                    ), 
         ),
         align="center",
         width="100%",
