@@ -39,6 +39,18 @@ class get_AML_rules(rx.State):
     def on_mount(self):
         self.text = get_AML_guidelines()
 
+class DownloadFiles(rx.State):
+    def download_KYC(self):
+        return rx.download(
+            data= get_KYC_guidelines(),
+            filename="KYC.txt",
+        )
+    def download_AML(self):
+        return rx.download(
+            data= get_AML_guidelines(),
+            filename="AML.txt",
+        )
+
 
 @template(route="/data",title="RBI Guidelines")
 def data()->rx.Component:
@@ -51,7 +63,10 @@ def data()->rx.Component:
                                       style=styles.overlapping_button_style,
                                         on_click=get_AML_rules.on_mount,on_double_click=get_KYC_rules.on_mount,
                                     ),
-                            rx.button("Download", style=styles.overlapping_button_style),
+                            rx.button("Download", 
+                                      style=styles.overlapping_button_style,          on_click=DownloadFiles.download_AML,
+                                      on_double_click=DownloadFiles.download_KYC
+                                    ),
                             direction="row",
                             spacing="4",
                         ),
