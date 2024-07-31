@@ -26,6 +26,19 @@ def post_KYC_guidelines(new_content):
         return json.loads(response.text)
     else:
         return {'error': response.text}
+    
+def post_AML_guidelines(new_content):
+    url = "http://127.0.0.1:8000/AML_guidelines/"
+    headers = {'Content-Type': 'application/json'}
+    data = {
+        'content': new_content
+    }
+    response = requests.post(url, headers=headers, data=json.dumps(data))
+    
+    if response.status_code == 200:
+        return json.loads(response.text)
+    else:
+        return {'error': response.text}
 
 class get_KYC_rules(rx.State):
     text: str = get_KYC_guidelines()
@@ -38,6 +51,18 @@ class get_AML_rules(rx.State):
 
     def on_mount(self):
         self.text = get_AML_guidelines()
+
+class save_KYC_rules(rx.State):
+    text: str = "KYC Rules Modified:"
+
+    def save(self,text):
+        post_KYC_guidelines(text)
+
+class save_AML_rules(rx.State):
+    text: str = "AML Rules Modified:"
+
+    def save(self,text):
+        post_AML_guidelines(text)
 
 class DownloadFiles(rx.State):
     def download_KYC(self):
@@ -85,10 +110,17 @@ def data()->rx.Component:
                                         rx.markdown(get_AML_rules.text),
                                     ),
                                         rx.box(
-                                        rx.text_area(placeholder="Enter text here...", style=styles.text_area_style),
+                                        rx.text_area(placeholder="Enter text here...", 
+                                                     style=styles.text_area_style,
+                                                     on_change=save_AML_rules.set_text
+                                                    ),
 
                                         rx.flex(
-                                            rx.button("Save", style=styles.overlapping_button_style),
+                                            rx.button(
+                                                "Save", 
+                                                style=styles.overlapping_button_style,
+                                                on_click=lambda: save_AML_rules.save(save_AML_rules.text)
+                                            ),
                                             direction="column",
                                         ),
                                     ),
@@ -104,9 +136,17 @@ def data()->rx.Component:
                                         rx.markdown(get_KYC_rules.text),
                                     ),
                                         rx.box(
-                                        rx.text_area(placeholder="Enter text here...",style=styles.text_area_style,),
+                                        rx.text_area(
+                                            placeholder="Enter text here...",
+                                            style=styles.text_area_style,
+                                            on_change=save_KYC_rules.set_text,
+                                        ),
                                         rx.flex(
-                                            rx.button("Save", style=styles.overlapping_button_style),
+                                            rx.button(
+                                                "Save", 
+                                                style=styles.overlapping_button_style,
+                                                on_click=lambda: save_KYC_rules.save(save_KYC_rules.text),
+                                            ),
                                             direction="column",
                                         ),
                                     ),
