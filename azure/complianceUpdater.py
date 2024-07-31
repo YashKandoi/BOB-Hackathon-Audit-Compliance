@@ -11,5 +11,5 @@ def main():
     RBI_main()
     compliance_main()
 
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+#     main()

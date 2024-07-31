@@ -162,21 +162,32 @@ def save_to_file(final_response):
     else:
         aml_section = "AML section not found"
 
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    project_root = os.path.dirname(script_dir)
+    regulations_files_path = os.path.join(project_root,'complicanceAI', 'regulations_files')
+
     # Write KYC section to a file
-    with open('complicanceAI/regulations_files/KYC.txt', 'w') as kyc_file:
+    kyc_file_path = os.path.join(regulations_files_path, 'KYC.txt')
+    with open(kyc_file_path, 'w') as kyc_file:
         kyc_file.write('KYC Rules: \n' + kyc_section)
 
     # Write AML section to a file
-    with open('complicanceAI/regulations_files/AML.txt', 'w') as aml_file:
+    aml_file_path = os.path.join(regulations_files_path, 'AML.txt')
+    with open(aml_file_path, 'w') as aml_file:
         aml_file.write('AML Rules: \n' + aml_section)
 
     print("Files created successfully!")
 
 def main():
-    # Usage example
-    for file in os.listdir('complicanceAI/regulations_files'):
-        os.remove(f'complicanceAI/regulations_files/{file}')
-    directory_path = "azure/RBI_Guidelines_Documents"
+
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    project_root = os.path.dirname(script_dir)
+    regulations_files_path = os.path.join(project_root,'complicanceAI', 'regulations_files')
+    for file in os.listdir(regulations_files_path):
+        os.remove(os.path.join(regulations_files_path, file))
+    
+    directory_path = os.path.join(os.path.dirname(__file__), 'RBI_Guidelines_Documents')
+
     print("Initializing vector store...")
     client, vector_store = initialize_vector_store(directory_path)
     print("Setting up the assistant...")
@@ -186,3 +197,6 @@ def main():
     # remove old files
     save_to_file(response)
     print("Files created successfully!")
+
+# if __name__ == "__main__":
+#     main()

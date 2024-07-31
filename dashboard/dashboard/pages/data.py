@@ -6,6 +6,12 @@ from .. import styles
 import requests
 import reflex as rx
 
+import sys
+import os
+# Add the top-level project directory to sys.path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))))
+from azure.complianceUpdater import main as complianceUpdater
+
 def get_AML_guidelines():
     x = requests.get("http://127.0.0.1:8000/AML_guidelines/")
     return json.loads(x.text)['content']
@@ -76,6 +82,17 @@ class DownloadFiles(rx.State):
             filename="AML.txt",
         )
 
+class FetchLatestRBIGuidelines(rx.State):
+    is_loading: bool = False
+
+    def fetch_guidelines(self):
+        complianceUpdater()
+        self.is_loading = False
+
+    def update_loader(self):
+        self.is_loading = True
+        self.fetch_guidelines()
+
 
 @template(route="/data",title="RBI Guidelines")
 def data()->rx.Component:
@@ -86,11 +103,18 @@ def data()->rx.Component:
                             rx.heading("RBI GUIDELINES", as_="h1"),
                             rx.button("Refresh", 
                                       style=styles.overlapping_button_style,
-                                        on_click=get_AML_rules.on_mount,on_double_click=get_KYC_rules.on_mount,
+                                        on_click=get_AML_rules.on_mount,
+                                        on_double_click=get_KYC_rules.on_mount,
                                     ),
                             rx.button("Download", 
-                                      style=styles.overlapping_button_style,          on_click=DownloadFiles.download_AML,
+                                      style=styles.overlapping_button_style,          
+                                      on_click=DownloadFiles.download_AML,
                                       on_double_click=DownloadFiles.download_KYC
+                                    ),
+                            rx.button("Fetch Latest RBI Guidelines", 
+                                      style=styles.overlapping_button_style,
+                                      on_click=FetchLatestRBIGuidelines.update_loader,
+                                      loading=FetchLatestRBIGuidelines.is_loading,
                                     ),
                             direction="row",
                             spacing="4",

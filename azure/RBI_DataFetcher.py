@@ -32,15 +32,18 @@ def save_files(response):
             # get the content of the page
             website_scrape_data = webistes.get('content')
             # save the content to a file
-            with open(f'azure/RBI_Guidelines_Documents/j_rbi_data_{file_number}.txt', 'w') as f:
+            directory_path = os.path.join(os.path.dirname(__file__), 'RBI_Guidelines_Documents')
+            file_path = os.path.join(directory_path, f'j_rbi_data_{file_number}.txt')
+            with open(file_path, 'w') as f:
                 f.write('URL:'+links + '\n' + website_scrape_data)
                 f.close()
             print(f"rbi_data_{file_number}.txt saved successfully.")
 
 def main():
     # clear the directory "azure/RBI_Guidelines_Document" before saving new files
-    for file in os.listdir('azure/RBI_Guidelines_Documents'):
-        os.remove(f'azure/RBI_Guidelines_Documents/{file}')
+    directory_path = os.path.join(os.path.dirname(__file__), 'RBI_Guidelines_Documents')
+    for file in os.listdir(directory_path):
+        os.remove(os.path.join(directory_path, file))
     response = jina_google_search('What are the lastest RBI KYC guidelines for banks?')
     print('Answers received, now saving files...')
     save_files(response)

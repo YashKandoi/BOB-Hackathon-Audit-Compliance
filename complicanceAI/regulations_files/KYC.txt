@@ -1,80 +1,66 @@
 KYC Rules: 
 #### Current Account
-**Requirement: Proof of Identity**
-- **Description:** Submit a valid Aadhaar card or PAN card.
-- **Citation:** RBI Guidelines 2024, Section 16【4:6†source】
+1. **Requirement: Proof of Identity**
+   - **Description:** Submit a valid Aadhaar card or PAN card.
+   - **Citation:** RBI Guidelines 2024, Section 2.1【6:0†source】
 
-**Requirement: Proof of Address**
-- **Description:** Submit a recent utility bill or rent agreement.
-- **Citation:** RBI Guidelines 2024, Section 16【4:6†source】
+2. **Requirement: Proof of Address**
+   - **Description:** Submit a recent utility bill or rent agreement.
+   - **Citation:** RBI Guidelines 2024, Section 2.2【6:0†source】
 
-**Requirement: Customer Due Diligence (CDD)**
-- **Description:** Obtain the Aadhaar number and PAN or Form No. 60.
-- **Citation:** RBI Guidelines 2024, Section 16【4:6†source】
+3. **Requirement: Business Registration Documents**
+   - **Description:** Provide business registration documents such as Certificate of Incorporation.
+   - **Citation:** RBI Guidelines 2024, Section 3.1【6:0†source】
 
 #### Savings Account
-**Requirement: Proof of Identity**
-- **Description:** Submit a valid Aadhaar card or PAN card.
-- **Citation:** RBI Guidelines 2024, Section 16【4:6†source】
+1. **Requirement: Proof of Identity**
+   - **Description:** Submit a valid Aadhaar card or PAN card.
+   - **Citation:** RBI Guidelines 2024, Section 2.1【6:1†source】
 
-**Requirement: Proof of Address**
-- **Description:** Submit a recent utility bill or rent agreement.
-- **Citation:** RBI Guidelines 2024, Section 16【4:6†source】
-
-**Requirement: Customer Due Diligence (CDD)**
-- **Description:** Obtain the Aadhaar number and PAN or Form No. 60.
-- **Citation:** RBI Guidelines 2024, Section 16【4:6†source】
+2. **Requirement: Proof of Address**
+   - **Description:** Submit a recent utility bill or rent agreement.
+   - **Citation:** RBI Guidelines 2024, Section 2.2【6:1†source】
 
 #### Salary Account
-**Requirement: Proof of Identity**
-- **Description:** Submit a valid Aadhaar card or PAN card.
-- **Citation:** RBI Guidelines 2024, Section 16【4:6†source】
+1. **Requirement: Proof of Identity**
+   - **Description:** Submit a valid Aadhaar card or PAN card.
+   - **Citation:** RBI Guidelines 2024, Section 2.1【6:2†source】
 
-**Requirement: Proof of Address**
-- **Description:** Submit a recent utility bill or rent agreement.
-- **Citation:** RBI Guidelines 2024, Section 16【4:6†source】
+2. **Requirement: Proof of Address**
+   - **Description:** Submit a recent utility bill or rent agreement.
+   - **Citation:** RBI Guidelines 2024, Section 2.2【6:2†source】
 
-**Requirement: Customer Due Diligence (CDD)**
-- **Description:** Obtain the Aadhaar number and PAN or Form No. 60.
-- **Citation:** RBI Guidelines 2024, Section 16【4:6†source】
+3. **Requirement: Employer Certificate**
+   - **Description:** Provide a certificate from the employer confirming employment.
+   - **Citation:** RBI Guidelines 2024, Section 3.3【6:2†source】
 
 #### Fixed Deposit Account
-**Requirement: Proof of Identity**
-- **Description:** Submit a valid Aadhaar card or PAN card.
-- **Citation:** RBI Guidelines 2024, Section 16【4:6†source】
+1. **Requirement: Proof of Identity**
+   - **Description:** Submit a valid Aadhaar card or PAN card.
+   - **Citation:** RBI Guidelines 2024, Section 2.1【6:3†source】
 
-**Requirement: Proof of Address**
-- **Description:** Submit a recent utility bill or rent agreement.
-- **Citation:** RBI Guidelines 2024, Section 16【4:6†source】
-
-**Requirement: Customer Due Diligence (CDD)**
-- **Description:** Obtain the Aadhaar number and PAN or Form No. 60.
-- **Citation:** RBI Guidelines 2024, Section 16【4:6†source】
+2. **Requirement: Proof of Address**
+   - **Description:** Submit a recent utility bill or rent agreement.
+   - **Citation:** RBI Guidelines 2024, Section 2.2【6:3†source】
 
 #### Recurring Deposit Account
-**Requirement: Proof of Identity**
-- **Description:** Submit a valid Aadhaar card or PAN card.
-- **Citation:** RBI Guidelines 2024, Section 16【4:6†source】
+1. **Requirement: Proof of Identity**
+   - **Description:** Submit a valid Aadhaar card or PAN card.
+   - **Citation:** RBI Guidelines 2024, Section 2.1【6:4†source】
 
-**Requirement: Proof of Address**
-- **Description:** Submit a recent utility bill or rent agreement.
-- **Citation:** RBI Guidelines 2024, Section 16【4:6†source】
-
-**Requirement: Customer Due Diligence (CDD)**
-- **Description:** Obtain the Aadhaar number and PAN or Form No. 60.
-- **Citation:** RBI Guidelines 2024, Section 16【4:6†source】
+2. **Requirement: Proof of Address**
+   - **Description:** Submit a recent utility bill or rent agreement.
+   - **Citation:** RBI Guidelines 2024, Section 2.2【6:4†source】
 
 #### NRI Accounts
-**Requirement: Proof of Identity**
-- **Description:** Submit a valid passport with visa and immigration endorsement.
-- **Citation:** RBI Guidelines 2024, Section 44【4:11†source】
+1. **Requirement: Proof of Identity**
+   - **Description:** Submit a valid passport.
+   - **Citation:** RBI Guidelines 2024, Section 2.1【6:5†source】
 
-**Requirement: Proof of Address**
-- **Description:** Submit proof of address in the home country along with a photograph and a letter offering admission from the educational institution in India.
-- **Citation:** RBI Guidelines 2024, Section 44【4:11†source】
+2. **Requirement: Proof of Address**
+   - **Description:** Submit a recent utility bill or rent agreement from the country of residence.
+   - **Citation:** RBI Guidelines 2024, Section 2.2【6:5†source】
 
-**Requirement: Customer Due Diligence (CDD)**
-- **Description:** Obtain a declaration about the local address within 30 days of opening the account.
-- **Citation:** RBI Guidelines 2024, Section 44【4:11†source】
-
----
+3. **Requirement: Overseas Address Proof**
+   - **Description:** Provide proof of overseas address.
+   - **Citation:** RBI Guidelines 2024, Section 3.4【6:5†source】
