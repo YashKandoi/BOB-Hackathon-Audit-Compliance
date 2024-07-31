@@ -27,13 +27,34 @@ def post_KYC_guidelines(new_content):
     else:
         return {'error': response.text}
 
+class get_KYC_rules(rx.State):
+    text: str = get_KYC_guidelines()
+
+    def on_mount(self):
+        self.text = get_KYC_guidelines()
+
+class get_AML_rules(rx.State):
+    text: str = get_AML_guidelines()
+
+    def on_mount(self):
+        self.text = get_AML_guidelines()
+
 
 @template(route="/data",title="RBI Guidelines")
 def data()->rx.Component:
     return rx.box(
             rx.flex(
                 rx.box(
-                    rx.heading("RBI GUIDELINES", as_="h1"),
+                    rx.flex(
+                            rx.heading("RBI GUIDELINES", as_="h1"),
+                            rx.button("Refresh", 
+                                      style=styles.overlapping_button_style,
+                                        on_click=get_AML_rules.on_mount,on_double_click=get_KYC_rules.on_mount,
+                                    ),
+                            rx.button("Download", style=styles.overlapping_button_style),
+                            direction="row",
+                            spacing="4",
+                        ),
                 ),
                 rx.box(
                     rx.flex(
@@ -46,7 +67,7 @@ def data()->rx.Component:
                             rx.tabs.content(
                                     rx.flex(
                                         rx.box(
-                                        rx.markdown(get_AML_guidelines()),
+                                        rx.markdown(get_AML_rules.text),
                                     ),
                                         rx.box(
                                         rx.text_area(placeholder="Enter text here...", style=styles.text_area_style),
@@ -65,7 +86,7 @@ def data()->rx.Component:
                             rx.tabs.content(
                                 rx.flex(
                                         rx.box(
-                                        rx.markdown(get_KYC_guidelines()),
+                                        rx.markdown(get_KYC_rules.text),
                                     ),
                                         rx.box(
                                         rx.text_area(placeholder="Enter text here...",style=styles.text_area_style,),
@@ -86,11 +107,11 @@ def data()->rx.Component:
                         ),
                             width="100%"
                         ),
-                        rx.box(
-                            rx.button("Download", style=styles.overlapping_button_style),
-                            direction="column",
-                            width="100%",
-                        ),
+                        # rx.box(
+                        #     rx.button("Download", style=styles.overlapping_button_style),
+                        #     direction="column",
+                        #     width="100%",
+                        # ),
                     direction="column",
                     ),
                     width="100%"
