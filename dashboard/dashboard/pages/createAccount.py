@@ -66,7 +66,7 @@ class FormState(rx.State):
             other_documents = os.path.join(super_root, other_documents)
             files = {
                 'bank_statement': open(bank_statement, 'rb'),
-                'other_documents': open(other_documents, 'rb'),
+                # 'other_documents': open(other_documents, 'rb'),
             }
         else:
             files = {
@@ -92,7 +92,7 @@ class FormState(rx.State):
             'adhaar_number': adhaar_number,
         }
 
-        # print(data)
+        print(data)
         # print(files)
 
         response = requests.post(url, files=files, data=data)
@@ -102,6 +102,7 @@ class FormState(rx.State):
             print("Data successfully sent to server.")
         else:
             print(f"Failed to send data. Status code: {response.status_code}")
+            print(f"Response content: {response.content}")
 
 
     def generate_account_audit_report(self, account_adhaar_number: str, account_type: str):
@@ -148,12 +149,12 @@ def createAccount() -> rx.Component:
                         required=True,
                     ),
                     rx.input(
-                        placeholder="PAN Number",
+                        placeholder="Enter 10-Keyword PAN Number",
                         name="pan_number",
                         required=True,
                     ),
                     rx.input(
-                        placeholder="Adhaar Number",
+                        placeholder="Enter 12-digit Adhaar Number",
                         name="adhaar_number",
                         required=True,
                     ),
