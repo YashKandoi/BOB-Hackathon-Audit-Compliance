@@ -1,21 +1,32 @@
 # BOB-Hackathon-Audit-Compliance
-Manual methods are prone to errors and inefficiencies. By leveraging generative AI, we aim to revolutionize audit and compliance, making these processes faster and more reliable, ensuring organizations stay compliant with evolving regulations.
+Manual methods are prone to errors and inefficiencies. By leveraging generative AI, we aim to revolutionize audit and compliance, making these processes faster and more reliable, and ensuring organizations stay compliant with evolving regulations.
 
-This requires us to use RAG and Fine-Tuning Frameworks along with ensuring Data Privacy.
+We bring to you **ComplianceAI**, the all-in-one Compliance and Audit tool of 2024 that brings in GenAI features to make your banking easier. Some remarkable features of our product:
 
-![i1](https://github.com/YashKandoi/BOB-Hackathon-Audit-Compliance/assets/98639264/520e8060-271f-4995-b49f-2bd6f60ba9fb)
+1. Continuously monitors and updates compliance requirements, adapting to new regulations and standards set by the **Reserve Bank of India**.
+2. Generate **comprehensive compliance audit reports** with minimal human intervention by mapping them to these latest RBI Guidelines.
+3. Checks for **several compliances(AML, KYC**) distributed over **different account types** (Savings, Current, Salary, Fixed Deposit, Recurring Deposit, NRI) and flags them if any **suspicious activity** has been detected.
+4. Displays several insights about the different bank accounts and the savings made through the tool.
+5. Top-notch **Privacy and Data Security** is maintained by creating different vector stores for each user's bank account and is only visible to the bank in the Azure Portal. This can also be deleted post-generation of audit reports.
+6. **Highly Scalable** through Azure Solutions.
+7. **Easy Development and Maintainance** of the System since the entire project has been built using Django as the backend framework used by several large organisations.
+8. Option to change and edit compliance available on the product for **easy integration into the bank's requirements**.
 
-We inspire our UI for the application from Astra security UI on compliance analysis.
+## Overview Page
+![overview](https://github.com/user-attachments/assets/5dd8329a-6614-498e-8337-2890688b0498)
 
-![i3](https://github.com/YashKandoi/BOB-Hackathon-Audit-Compliance/assets/98639264/6a49346c-43fe-4193-8665-7d4a5ab82e28)
+## RBI Guidelines Updater Page
+![rbi_guidelines](https://github.com/user-attachments/assets/de1cf9d3-aec7-4737-8ac7-25436d607535)
 
-We plan to use the Azure RAG architecture for our idea.
+## Create Bank Account Page
+![create_account](https://github.com/user-attachments/assets/9a875ae4-2fcb-4e8c-9044-79cb99f7e0c9)
 
-## Azure Tools to be used
-1. Azure AI for language processing and anomaly detection
+## Download Audit Reports Page
+![users](https://github.com/user-attachments/assets/f8bdca52-6d20-42e3-8b79-5ffaa36600a1)
+
+## Azure Tools Used
+1. Azure Assistants API: For Generating the Audit Reports
 2. Azure OpenAI: For LLM prompting and generating responses
-3. Azure Machine Learning for model training and deployment
-4. Azure Functions for serverless execution of audit processes
+3. Azure AI Search: For storing the latest RBI compliance reports.
 
-These resources will help us build a robust, scalable solution capable of handling complex audit tasks efficiently.
-
+# Steps to Run
