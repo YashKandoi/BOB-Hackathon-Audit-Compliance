@@ -124,6 +124,8 @@ def users() -> rx.Component:
         ),
         direction="column",
         spacing="4",
+        align="center",
+        width="100%",
     )
     
 
