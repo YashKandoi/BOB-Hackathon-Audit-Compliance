@@ -97,6 +97,7 @@ def _header_cell(text: str, icon: str):
 
 @template(route="/users", title="Users")
 def users() -> rx.Component:
+    response = rq.get("http://127.0.0.1:8000/bank_accounts/")
     return rx.flex(
         rx.box(
                 rx.heading("Bank Accounts", as_="h1"),
