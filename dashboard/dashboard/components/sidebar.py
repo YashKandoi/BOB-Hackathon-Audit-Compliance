@@ -143,7 +143,7 @@ def sidebar() -> rx.Component:
         "/createAccount",
         "/users",
         # "/settings",
-        "/about",
+        # "/about",
     ]
 
     # Get the decorated pages.

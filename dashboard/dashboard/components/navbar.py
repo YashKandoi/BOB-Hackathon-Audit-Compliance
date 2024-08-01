@@ -118,7 +118,7 @@ def menu_button() -> rx.Component:
         "/createAccount",
         "/users",
         # "/settings",
-        "/about",
+        # "/about",
     ]
 
     # Get the decorated pages.
