@@ -30,7 +30,7 @@ We bring to you **ComplianceAI**, the all-in-one Compliance and Audit tool of 20
 
 # Steps to Run
 
-1. Clone the Repository from Github in an IDE from [https://github.com/YashKandoi/susgpt.git](https://github.com/YashKandoi/BOB-Hackathon-Audit-Compliance) or Download the Zip File.
+1. Clone the Repository from Github in an IDE from [ComplianceAI](https://github.com/YashKandoi/BOB-Hackathon-Audit-Compliance) or Download the Zip File.
 
 2. Creating a virtual environment
    You can create a virtual env and choose to run you code on that. Open your terminal and do this:
