@@ -30,5 +30,24 @@ We bring to you **ComplianceAI**, the all-in-one Compliance and Audit tool of 20
 
 # Steps to Run
 
+1. Clone the Repository from Github in an IDE from [https://github.com/YashKandoi/susgpt.git](https://github.com/YashKandoi/BOB-Hackathon-Audit-Compliance) or Download the Zip File.
 
+2. Creating a virtual environment
+   You can create a virtual env and choose to run you code on that. Open your terminal and do this:
+   1. ```python3 -m venv .venv```
+   2. ```. .venv/bin/activate```
+  
+3. Run
+   ```pip install -r requirements.txt```
+   This will take some time and install all required libraries.
+
+4. Run
+    ```rav run server``` to start Django Backend Server.
+
+5. Open another terminal and Run
+     ```rav run frontend``` to run the frontend application.
+
+6. Go to the frontend server shown in the terminal and this will start **ComplianceAI**.
+
+--------------------------------------------------------------------------------------
 Created with ❤️ by [Yash Kumar Kandoi](https://github.com/YashKandoi) , [Suvid Singhal](https://github.com/Suvid-Singhal) & [Aditya Deshpande](https://github.com/adityadeshpande04)
