@@ -53,6 +53,9 @@ class DownloadAuditReport(rx.State):
 class TableForEachState(rx.State):
     people: list[list] = get_people()
 
+    def load_data(self):
+        self.people = get_people()
+
 class UserDetailState(rx.State):
     selected_person: list = []
 
@@ -95,9 +98,8 @@ def _header_cell(text: str, icon: str):
         ),
     )
 
-@template(route="/users", title="Users")
+@template(route="/users", title="Users", on_load=TableForEachState.load_data)
 def users() -> rx.Component:
-    response = rq.get("http://127.0.0.1:8000/bank_accounts/")
     return rx.flex(
         rx.box(
                 rx.heading("Bank Accounts", as_="h1"),
