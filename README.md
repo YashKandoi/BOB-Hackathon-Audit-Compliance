@@ -50,4 +50,5 @@ We bring to you **ComplianceAI**, the all-in-one Compliance and Audit tool of 20
 6. Go to the frontend server shown in the terminal and this will start **ComplianceAI**.
 
 --------------------------------------------------------------------------------------
+[Demo Video](https://youtu.be/z_S7mBHjZnc?feature=shared) | [Setup Video](https://www.loom.com/share/ec8186f0bb7447b58094fb40f1bd5d87?sid=2aef8a0e-4fbe-4b11-960b-7be4ea34d3d8)
 Created with ❤️ by [Yash Kumar Kandoi](https://github.com/YashKandoi) , [Suvid Singhal](https://github.com/Suvid-Singhal) & [Aditya Deshpande](https://github.com/adityadeshpande04)
