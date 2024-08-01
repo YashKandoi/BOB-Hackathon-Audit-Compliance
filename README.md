@@ -1,6 +1,8 @@
 # BOB-Hackathon-Audit-Compliance
 Manual methods are prone to errors and inefficiencies. By leveraging generative AI, we aim to revolutionize audit and compliance, making these processes faster and more reliable, and ensuring organizations stay compliant with evolving regulations.
 
+![overview](https://github.com/user-attachments/assets/5dd8329a-6614-498e-8337-2890688b0498)
+
 We bring to you **ComplianceAI**, the all-in-one Compliance and Audit tool of 2024 that brings in GenAI features to make your banking easier. Some remarkable features of our product:
 
 1. Continuously monitors and updates compliance requirements, adapting to new regulations and standards set by the **Reserve Bank of India**.
@@ -11,9 +13,6 @@ We bring to you **ComplianceAI**, the all-in-one Compliance and Audit tool of 20
 6. **Highly Scalable** through Azure Solutions.
 7. **Easy Development and Maintainance** of the System since the entire project has been built using Django as the backend framework used by several large organisations.
 8. Option to change and edit compliance available on the product for **easy integration into the bank's requirements**.
-
-## Overview Page
-![overview](https://github.com/user-attachments/assets/5dd8329a-6614-498e-8337-2890688b0498)
 
 ## RBI Guidelines Updater Page
 ![rbi_guidelines](https://github.com/user-attachments/assets/de1cf9d3-aec7-4737-8ac7-25436d607535)
