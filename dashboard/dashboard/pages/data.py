@@ -6,17 +6,45 @@ from .. import styles
 import requests
 import reflex as rx
 
+import time
 import sys
 import os
 # Add the top-level project directory to sys.path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))))
 from azure.complianceUpdater import main as complianceUpdater
 
+COUNTER = 0
+
+def create_files():
+    if not os.path.exists('/Users/yash/BOB-Hackathon-Audit-Compliance/complicanceAI/regulations_files/AML.txt'):
+        with open('/Users/yash/BOB-Hackathon-Audit-Compliance/complicanceAI/regulations_files/AML.txt', 'w') as f:
+            f.write("Press fetch latest RBI Guidelines to get the latest guidelines")
+    if not os.path.exists('/Users/yash/BOB-Hackathon-Audit-Compliance/complicanceAI/regulations_files/KYC.txt'):
+        with open('/Users/yash/BOB-Hackathon-Audit-Compliance/complicanceAI/regulations_files/KYC.txt', 'w') as f:
+            f.write("Press fetch latest RBI Guidelines to get the latest guidelines")
+    # Write in relative path terms for above code to work
+    # if not os.path.exists('./complicanceAI/regulations_files/AML.txt'):
+    #     with open('./complicanceAI/regulations_files/AML.txt', 'w') as f:
+    #         f.write("Press fetch latest RBI Guidelines to get the latest guidelines")
+    # if not os.path.exists('./complicanceAI/regulations_files/KYC.txt'):
+    #     with open('./complicanceAI/regulations_files/KYC.txt', 'w') as f:
+    #         f.write("Press fetch latest RBI Guidelines to get the latest guidelines")
+
 def get_AML_guidelines():
+    global COUNTER
+    if COUNTER == 0:
+        create_files()
+        time.sleep(1)
+        COUNTER = 1
     x = requests.get("http://127.0.0.1:8000/AML_guidelines/")
     return json.loads(x.text)['content']
 
 def get_KYC_guidelines():
+    global COUNTER
+    if COUNTER == 0:
+        create_files()
+        time.sleep(1)
+        COUNTER = 1
     x = requests.get("http://127.0.0.1:8000/KYC_guidelines/")
     return json.loads(x.text)['content']
 
