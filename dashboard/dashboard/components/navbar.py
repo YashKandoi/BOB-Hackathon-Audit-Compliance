@@ -33,9 +33,9 @@ def menu_item(text: str, url: str) -> rx.Component:
                 ("RBI Guidelines", menu_item_icon("scroll-text")),
                 ("Create Account", menu_item_icon("user-round-plus")),
                 ("Settings", menu_item_icon("settings")),
-                ("Table", menu_item_icon("table-2")),
+                # ("Table", menu_item_icon("table-2")),
                 ("About", menu_item_icon("book-open")),
-                ("Profile", menu_item_icon("user")),
+                # ("Profile", menu_item_icon("user")),
                 menu_item_icon("layout-dashboard"),
             ),
             rx.text(text, size="4", weight="regular"),
@@ -83,18 +83,18 @@ def navbar_footer() -> rx.Component:
         The navbar footer component.
     """
     return rx.hstack(
-        rx.link(
-            rx.text("Docs", size="3"),
-            href="https://reflex.dev/docs/getting-started/introduction/",
-            color_scheme="gray",
-            underline="none",
-        ),
-        rx.link(
-            rx.text("Blog", size="3"),
-            href="https://reflex.dev/blog/",
-            color_scheme="gray",
-            underline="none",
-        ),
+        # rx.link(
+        #     rx.text("Docs", size="3"),
+        #     href="https://reflex.dev/docs/getting-started/introduction/",
+        #     color_scheme="gray",
+        #     underline="none",
+        # ),
+        # rx.link(
+        #     rx.text("Blog", size="3"),
+        #     href="https://reflex.dev/blog/",
+        #     color_scheme="gray",
+        #     underline="none",
+        # ),
         rx.spacer(),
         rx.color_mode.button(style={"opacity": "0.8", "scale": "0.95"}),
         justify="start",
@@ -111,24 +111,40 @@ def menu_button() -> rx.Component:
     # The ordered page routes.
     ordered_page_routes = [
         "/",
-        "/table",
+        # "/table",
+        # "/account",
+        # "/profile",
+        "/data",
+        "/createAccount",
+        "/users",
+        # "/settings",
         "/about",
-        "/profile",
-        "/settings",
     ]
 
     # Get the decorated pages.
     pages = get_decorated_pages()
 
+    # Create a dictionary mapping routes to pages.
+    pages_dict = {page["route"]: page for page in pages}
+
+    # filtered_pages = [page for page in pages if page["route"] in ordered_page_routes]
+
     # Include all pages even if they are not in the ordered_page_routes.
-    ordered_pages = sorted(
-        pages,
-        key=lambda page: (
-            ordered_page_routes.index(page["route"])
-            if page["route"] in ordered_page_routes
-            else len(ordered_page_routes)
-        ),
-    )
+    # ordered_pages = sorted(
+    #     pages,
+    #     key=lambda page: (
+    #         ordered_page_routes.index(page["route"])
+    #         if page["route"] in ordered_page_routes
+    #         else len(ordered_page_routes)
+    #     ),
+    # )
+
+    # ordered_pages = sorted(
+    #     filtered_pages,
+    #     key=lambda page: ordered_page_routes.index(page["route"])
+    # )
+
+    ordered_pages = [pages_dict[route] for route in ordered_page_routes if route in pages_dict]
 
     return rx.drawer.root(
         rx.drawer.trigger(
