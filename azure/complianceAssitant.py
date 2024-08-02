@@ -2,9 +2,11 @@ import os
 import re
 import time
 from openai import AzureOpenAI
+from decouple import config
 
-AZURE_OPENAI_API_KEY = "939de1ef4c4e439dbaad834c55551410"
-AZURE_OPENAI_ENDPOINT = "https://second-openai-resource.openai.azure.com/"
+
+AZURE_OPENAI_API_KEY = config("AZURE_OPENAI_API_KEY", cast=str, default=None)
+AZURE_OPENAI_ENDPOINT = config("AZURE_OPENAI_ENDPOINT", cast=str, default=None)
 # VECTOR_STORE_ID = ""
 # Write multiline string
 PROMPT = """**Instructions:**
