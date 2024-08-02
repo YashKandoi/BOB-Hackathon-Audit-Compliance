@@ -40,17 +40,19 @@ We bring to you **ComplianceAI**, the all-in-one Compliance and Audit tool of 20
    1. ```python3 -m venv .venv```
    2. ```. .venv/bin/activate```
   
-3. Run
+3. Copy the ```.env file keys``` given in the Google Slides PPT in the ```.env``` file.
+  
+4. Run
    ```pip install -r requirements.txt```
    This will take some time and install all required libraries.
 
-4. Run
+5. Run
     ```rav run server``` to start Django Backend Server.
 
-5. Open another terminal and Run
+6. Open another terminal and Run
      ```rav run frontend``` to run the frontend application.
 
-6. Go to the frontend server shown in the terminal and this will start **ComplianceAI**.
+7. Go to the frontend server shown in the terminal and this will start **ComplianceAI**.
 
 --------------------------------------------------------------------------------------
 [Demo Video](https://youtu.be/z_S7mBHjZnc?feature=shared) | [Setup Video](https://www.loom.com/share/ec8186f0bb7447b58094fb40f1bd5d87?sid=2aef8a0e-4fbe-4b11-960b-7be4ea34d3d8)
