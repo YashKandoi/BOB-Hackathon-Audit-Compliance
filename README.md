@@ -24,9 +24,12 @@ We bring to you **ComplianceAI**, the all-in-one Compliance and Audit tool of 20
 ![users](https://github.com/user-attachments/assets/f8bdca52-6d20-42e3-8b79-5ffaa36600a1)
 
 ## Azure Tools Used
-1. Azure Assistants API: For Generating the Audit Reports
-2. Azure OpenAI: For LLM prompting and generating responses
-3. Azure AI Search: For storing the latest RBI compliance reports.
+1. **Azure Assistants API:** For Generating the Audit Reports
+2. **Azure OpenAI:** For LLM prompting and generating responses
+3. **Azure AI Search:** For storing the latest RBI compliance reports
+4. **Django and Python:** For preparing the Backend Framework
+5. **Reflex:** Open Source Python Library to prepare the Frontend
+6. **JinaReader API:** Open Source Website Crawler for scraping RBI Guidelines
 
 # Steps to Run
 
