@@ -115,6 +115,7 @@ def menu_button() -> rx.Component:
         # "/account",
         # "/profile",
         "/data",
+        "/chatbot",
         "/createAccount",
         "/users",
         # "/settings",

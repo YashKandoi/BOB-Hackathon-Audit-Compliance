@@ -1,1 +1,58 @@
-Press fetch latest RBI Guidelines to get the latest guidelines
+AML Rules: 
+```plaintext
+Current Account
+Requirement: Transaction Monitoring
+Description: Monitor transactions exceeding INR 10 lakhs.
+Citation: RBI Guidelines 2024, Section 62【4:11†source】.
+
+Requirement: Suspicious Activity Reporting
+Description: Report any suspicious activities to the relevant authorities.
+Citation: RBI Guidelines 2024, Section 62【4:11†source】.
+
+Savings Account
+Requirement: Transaction Monitoring
+Description: Monitor transactions exceeding INR 10 lakhs.
+Citation: RBI Guidelines 2024, Section 62【4:11†source】.
+
+Requirement: Suspicious Activity Reporting
+Description: Report any suspicious activities to the relevant authorities.
+Citation: RBI Guidelines 2024, Section 62【4:11†source】.
+
+Salary Account
+Requirement: Transaction Monitoring
+Description: Monitor transactions exceeding INR 10 lakhs.
+Citation: RBI Guidelines 2024, Section 62【4:11†source】.
+
+Requirement: Suspicious Activity Reporting
+Description: Report any suspicious activities to the relevant authorities.
+Citation: RBI Guidelines 2024, Section 62【4:11†source】.
+
+Fixed Deposit Account
+Requirement: Transaction Monitoring
+Description: Monitor transactions exceeding INR 10 lakhs.
+Citation: RBI Guidelines 2024, Section 62【4:11†source】.
+
+Requirement: Suspicious Activity Reporting
+Description: Report any suspicious activities to the relevant authorities.
+Citation: RBI Guidelines 2024, Section 62【4:11†source】.
+
+Recurring Deposit Account
+Requirement: Transaction Monitoring
+Description: Monitor transactions exceeding INR 10 lakhs.
+Citation: RBI Guidelines 2024, Section 62【4:11†source】.
+
+Requirement: Suspicious Activity Reporting
+Description: Report any suspicious activities to the relevant authorities.
+Citation: RBI Guidelines 2024, Section 62【4:11†source】.
+
+NRI Accounts
+Requirement: Enhanced Due Diligence
+Description: Conduct enhanced due diligence for high-risk customers.
+Citation: RBI Guidelines 2024, Section 40【4:17†source】.
+
+Requirement: Periodic Review
+Description: Perform periodic reviews of the account activities.
+Citation: RBI Guidelines 2024, Section 40【4:17†source】.
+```
+
+Please copy the above content into "KYC.txt" and "AML.txt" files respectively.

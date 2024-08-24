@@ -192,6 +192,11 @@ def main():
 
     print("Initializing vector store...")
     client, vector_store = initialize_vector_store(directory_path)
+    # Save vector_store.id to a file vector_store_id.txt in the root folder
+    root_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+    vector_store_id_path = os.path.join(root_path, "vector_store_id.txt")
+    with open(vector_store_id_path, 'w') as f:
+        f.write(vector_store.id)
     print("Setting up the assistant...")
     assistant, thread = setup_assistant(client, vector_store)
     print("Loading Answer...")
