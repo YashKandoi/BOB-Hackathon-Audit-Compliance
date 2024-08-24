@@ -79,6 +79,7 @@ def sidebar_item(text: str, url: str) -> rx.Component:
                 ("Overview", sidebar_item_icon("home")),
                 ("Users", sidebar_item_icon("users-round")),
                 ("RBI Guidelines", sidebar_item_icon("scroll-text")),
+                ("Changes", sidebar_item_icon("scroll-text")),
                 ("Create Account", sidebar_item_icon("user-round-plus")),
                 ("Settings", sidebar_item_icon("settings")),
                 # ("Table", sidebar_item_icon("table-2")),
@@ -142,6 +143,7 @@ def sidebar() -> rx.Component:
         "/data",
         "/createAccount",
         "/users",
+        "/changes",
         # "/settings",
         # "/about",
     ]

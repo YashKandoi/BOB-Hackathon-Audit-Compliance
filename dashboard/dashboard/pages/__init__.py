@@ -6,4 +6,4 @@ from .profile import profile
 from .data import data
 from .createAccount import createAccount
 from .users import users
-# from .users import user_detail
+from .changes import changes
