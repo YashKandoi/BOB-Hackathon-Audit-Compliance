@@ -140,6 +140,7 @@ def sidebar() -> rx.Component:
         # "/account",
         # "/profile",
         "/data",
+        "/chatbot",
         "/createAccount",
         "/users",
         # "/settings",
