@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+import dj_database_url
+import logging
 from pathlib import Path
 from decouple import config
 import os
@@ -79,25 +81,41 @@ WSGI_APPLICATION = "complicanceAI.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASE_URL = config("DATABASE_URL", cast=str, default=None)
+# DATABASE_URL = "postgresql://neondb_owner:7AYabQi5LWqX@ep-tiny-voice-a5u7oyy8.us-east-2.aws.neon.tech/neondb?sslmode=require"
+
+# if DATABASE_URL:
+#     DATABASES = {
+#         "default": dj_database_url.config(
+#             default=DATABASE_URL,
+#             conn_max_age=300,
+#             conn_health_checks=True
+#         )
+#     }
+# else:
+#     DATABASES = {
+#         "default": {
+#             "ENGINE": "django.db.backends.sqlite3",
+#             "NAME": BASE_DIR / "db.sqlite3",
+#         }
+#     }
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'neondb',
+        'USER': 'neondb_owner',
+        'PASSWORD': '7AYabQi5LWqX',
+        'HOST': 'ep-tiny-voice-a5u7oyy8.us-east-2.aws.neon.tech',
+        'PORT': '5432',  # Default PostgreSQL port
     }
 }
 
-DATABASE_URL = config("DATABASE_URL", cast = str, default=None)
 
-if DATABASE_URL is not None:
-    import dj_database_url
-    DATABASES = {
-        "default": dj_database_url.config(
-            default=DATABASE_URL,
-            conn_max_age=300,
-            conn_health_checks=True
-        )
-    }
+# logger = logging.getLogger(__name__)
 
+# logger.info(f"DATABASE_URL: {DATABASE_URL}")
+# logger.info(f"DATABASES: {DATABASES}")
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
