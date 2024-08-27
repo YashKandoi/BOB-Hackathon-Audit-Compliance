@@ -10,6 +10,15 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(
 
 counter = 1
 
+def get_AML_guidelines():
+    x = requests.get("http://127.0.0.1:8000/AML_guidelines/")
+    return json.loads(x.text)['content']
+
+class get_AML_rules(rx.State):
+    text: str = ""
+
+    def on_mount(self):
+        self.text = get_AML_guidelines()
 
 
 class State(rx.State):
@@ -34,7 +43,10 @@ def changes()->rx.Component:
                 rx.box(
                     rx.flex(
                         rx.heading("CHANGES", as_="h1"),
-                        rx.button("Refresh", style=styles.overlapping_button_style,),
+                        rx.button("Refresh", 
+                                  on_click=get_AML_rules.on_mount,
+                                  style=styles.overlapping_button_style,
+                                ),
                         direction="row",
                         spacing="4",
                     ),
@@ -49,7 +61,7 @@ def changes()->rx.Component:
                                 multiple=False,
                             ),
                 ),
-                rx.box(rx.markdown("Following are the changes:"),), 
+                rx.box(rx.markdown(get_AML_rules.text),), 
                 direction="column",
                 spacing="4",
             ),
