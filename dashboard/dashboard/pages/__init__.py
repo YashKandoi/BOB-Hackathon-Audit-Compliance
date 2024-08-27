@@ -7,4 +7,4 @@ from .data import data
 from .chatbot import chatbot
 from .createAccount import createAccount
 from .users import users
-# from .users import user_detail
+from .changes import changes
