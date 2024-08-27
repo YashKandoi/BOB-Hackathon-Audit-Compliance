@@ -10,6 +10,8 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(
 
 counter = 1
 
+
+
 class State(rx.State):
     async def handle_upload(self, files: list[rx.UploadFile]):
         upload_dir = rx.get_upload_dir() / str(counter)
@@ -29,7 +31,14 @@ class State(rx.State):
 def changes()->rx.Component:
     return rx.box(
             rx.flex(
-                rx.box(rx.heading("CHANGES", as_="h1"),),
+                rx.box(
+                    rx.flex(
+                        rx.heading("CHANGES", as_="h1"),
+                        rx.button("Refresh", style=styles.overlapping_button_style,),
+                        direction="row",
+                        spacing="4",
+                    ),
+                ),
                 rx.box(
                     rx.upload(
                                 rx.text("Upload Compliance Requirement"),
