@@ -180,6 +180,21 @@ def save_to_file(final_response):
 
     print("Files created successfully!")
 
+def chatbot():    
+    directory_path = os.path.join(os.path.dirname(__file__), 'RBI_Guidelines_Documents')
+
+    print("Initializing vector store...")
+    client, vector_store = initialize_vector_store(directory_path)
+    # Save vector_store.id to a file vector_store_id.txt in the root folder
+    root_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+    vector_store_id_path = os.path.join(root_path, "vector_store_id.txt")
+    with open(vector_store_id_path, 'w') as f:
+        f.write(vector_store.id)
+    print("Setting up the assistant...")
+    assistant, thread = setup_assistant(client, vector_store)
+    print("Loading Answer...")
+    return client, assistant, thread
+
 def main():
 
     script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -204,6 +219,7 @@ def main():
     # remove old files
     save_to_file(response)
     print("Files created successfully!")
+
 
 # if __name__ == "__main__":
 #     main()

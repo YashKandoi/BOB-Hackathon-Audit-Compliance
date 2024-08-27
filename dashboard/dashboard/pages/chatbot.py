@@ -12,14 +12,17 @@ import re
 import time
 from openai import AzureOpenAI
 
-
 # Add the top-level project directory to sys.path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../..')))
+from azure.complianceAssitant import chatbot as compliance_chatbot
 
 AZURE_OPENAI_API_KEY = config("AZURE_OPENAI_API_KEY", cast=str, default=None)
 AZURE_OPENAI_ENDPOINT = config("AZURE_OPENAI_ENDPOINT", cast=str, default=None)
 
-vector_store_id = "vs_zUxocP6ymEEb039iCnBTLjaR"
+client, assistant, thread = None, None, None
+
+counter = 0
 
 is_loading = False
 
@@ -29,47 +32,6 @@ You are tasked with answering questions based strictly on the provided banking d
 
 The question is:
 """
-
-def initialize_vector_store(vector_store_id):
-    client = AzureOpenAI(
-        api_key=(AZURE_OPENAI_API_KEY),
-        api_version="2024-05-01-preview",
-        azure_endpoint=(AZURE_OPENAI_ENDPOINT)
-    )
-    
-    vector_store = client.beta.vector_stores.retrieve(vector_store_id=vector_store_id)
-
-    # List all .txt files in the specified directory
-    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..'))
-    folder_path = os.path.join(project_root, "azure", "RBI_Guidelines_Documents")
-    document_paths = []
-    for file in os.listdir(folder_path):
-        document_paths.append(os.path.join(folder_path, file))
-    
-    file_streams = [open(path, "rb") for path in document_paths]
-    
-    file_batch = client.beta.vector_stores.file_batches.upload_and_poll(
-        vector_store_id=vector_store_id, files=file_streams
-    )
-    
-    return client, vector_store
-
-def setup_assistant(client, vector_store):
-    assistant = client.beta.assistants.create(
-        instructions="You are an AI Compliance assistant tasked with helping a banker understand the complex banking guidelines. Your goal is to provide accurate and easy to understand information to the banker.",
-        model="gpt-4o",  # replace with model deployment name
-        tools=[{"type": "file_search"}],
-        temperature=0.2,
-    )
-    
-    assistant = client.beta.assistants.update(
-        assistant_id=assistant.id,
-        tool_resources={"file_search": {"vector_store_ids": [vector_store.id]}},
-    )
-    
-    thread = client.beta.threads.create()
-    
-    return assistant, thread
 
 def send_user_question(client, assistant, thread, question):
     message = client.beta.threads.messages.create(
@@ -134,10 +96,6 @@ class State(rx.State):
         return [os.path.basename(path) for path in self.document_paths]
 
     def load_document(self, doc_name: str):
-        global vector_store_id
-        root_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..'))
-        vector_store_id_path = os.path.join(root_path, "vector_store_id.txt")
-        vector_store_id = open(vector_store_id_path, "r").read()
         self.selected_doc = doc_name
         doc_path = next((path for path in self.document_paths if os.path.basename(path) == doc_name), None)
         if doc_path and os.path.exists(doc_path):
@@ -147,16 +105,16 @@ class State(rx.State):
             self.document_content = f"Error: File not found for {doc_name}"
 
     def send_question(self, form_data: dict):
+        global client,assistant,thread,counter
+        if counter == 0:
+            client, assistant, thread = compliance_chatbot()
+            counter += 1
         global is_loading
         is_loading = True
         question = form_data.get("user_question", "")
+        print("Loading answer for question:", question)
         if question:
             self.chat_history.append(("User", question))
-            print(f"Initializing vector store with {vector_store_id}...")
-            client, vector_store = initialize_vector_store(vector_store_id)
-            print("Setting up the assistant...")
-            assistant, thread = setup_assistant(client, vector_store)
-            print("Loading Answer...")
             response = send_user_question(client, assistant, thread, PROMPT+question)
             self.chat_history.append(("Chatbot", response))
             self.user_question = ""
@@ -230,7 +188,8 @@ def chatbot() -> rx.Component:
                               width="20%",
                                 type="submit",
                                 loading = is_loading,
-                                ),
+                                on_click=rx.window_alert("Question Sent Suceessfully"),
+                            ),
                     width="100%",
                 ),
                 on_submit=State.send_question,
