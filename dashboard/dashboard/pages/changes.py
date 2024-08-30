@@ -61,7 +61,7 @@ def changes()->rx.Component:
                                 multiple=False,
                             ),
                 ),
-                rx.box(rx.markdown(get_AML_rules.text),), 
+                rx.box(rx.markdown("Changes Summary:\n"+get_AML_rules.text),), 
                 direction="column",
                 spacing="4",
             ),
